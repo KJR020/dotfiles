@@ -22,7 +22,7 @@
 !/.zsh/completion/
 /.zsh/completion/**
 !/.virc
-!/.vimrc
+!.vimrc
 !/.vim/
 !/.vim/*/
 !/.vim/rc/
@@ -65,3 +65,11 @@
 !/LICENSE
 !.gitignore
 !.gitkeep
+
+!/.vscode/
+!/.vscode/*
+
+!.gitconfig
+!.bashrc
+!.bash_profile
+!.vrapperrc

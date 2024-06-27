@@ -1,0 +1,44 @@
+[
+  {
+    "key": "ctrl+P",
+    "command": "-workbench.action.quickOpenSelectPrevious"
+  },
+  {
+    "key": "ctrl+Q",
+    "command": "-workbench.action.quickOpenView"
+  },
+  {
+    "key": "ctrl+unknown",
+    "command": "-extension.vim_ctrl+^",
+    "when": "editorTextFocus && vim.active && vim.use<C-^> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+shift+oem_102",
+    "command": "toggleVim",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "-chatgpt-vscode.generateCode",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "-notification.acceptPrimaryAction",
+    "when": "notificationToastsVisible"
+  },
+  {
+    "key": "alt+t",
+    "command": "test-explorer.run-test-at-cursor"
+  },
+  {
+    "key": "alt+q",
+    "command": "workbench.action.showTreeHover",
+    "when": "customTreeView && listFocus && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "ctrl+k ctrl+i",
+    "command": "-workbench.action.showTreeHover",
+    "when": "customTreeView && listFocus && !inputFocus && !treestickyScrollFocused"
+  }
+]

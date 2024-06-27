@@ -1,0 +1,12 @@
+[user]
+	email = johnjiro1114@gmail.com
+	name = KJR020
+[core]
+	autoCRLF = false
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
