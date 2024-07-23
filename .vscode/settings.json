@@ -27,8 +27,6 @@
   "atcoderExtension.python.checker": "python --version",
   "atcoderExtension.python.executor": "python -u $tastily",
   "chatgpt.chromiumPath": "C:\\Program Files\\Google\\Chrome\\Application",
-  "chatgpt.gpt3.apiKey": "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",
-  "chatgpt.method": "GPT3 OpenAI API Key",
   "codesandbox.currentWorkspace": "3a0c1115-219a-4070-9a31-d037e232ac75",
   "cSpell.userWords": [
     "Allusers",
@@ -41,6 +39,7 @@
     "donot",
     "echarts",
     "esbenp",
+    "filterset",
     "foldfix",
     "Gantt",
     "hlsearch",
@@ -58,12 +57,14 @@
     "pytz",
     "rubberduck",
     "scminput",
+    "simplejwt",
     "streamlit",
     "Sysnative",
     "tabnine",
     "tailwindcss",
     "todos",
     "trycloudflare",
+    "viewsets",
     "vimrc",
     "visualstar",
     "windir",
@@ -207,7 +208,6 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "accessibility.signalOptions": {
-    "volume": 20
-  }
+  "accessibility.signalOptions.volume": 20,
+  "editor.formatOnSave": true
 }
