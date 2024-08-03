@@ -42,6 +42,8 @@
     "filterset",
     "foldfix",
     "Gantt",
+    "graphene",
+    "graphiql",
     "hlsearch",
     "inputbox",
     "jsonify",
@@ -51,6 +53,7 @@
     "neovim",
     "nohl",
     "nojekyll",
+    "onsubmit",
     "proconio",
     "pygame",
     "pytest",
@@ -119,7 +122,6 @@
   "python.defaultInterpreterPath": "",
   "python.formatting.blackPath": "",
   "python.formatting.provider": "black",
-  "python.terminal.activateEnvironment": false,
   "python.testing.cwd": "",
   "python.testing.pytestEnabled": true,
   "pythonTestExplorer.testFramework": "pytest",
@@ -209,5 +211,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "accessibility.signalOptions.volume": 20,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "python.terminal.activateEnvInCurrentTerminal": true
 }
