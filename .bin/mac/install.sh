@@ -1,5 +1,4 @@
 #!/bin/bash
-
 DOTFILES="$(pwd)"
 COLOR_GRAY="\033[1;38;5;243m"
 COLOR_BLUE="\033[1;34m"
@@ -10,8 +9,8 @@ COLOR_PURPLE="\033[1;35m"
 COLOR_NONE="\033[0m"
 
 title() {
-    echo "${COLOR_PURPLE}$1${COLOR_NONE}"
-    echo "${COLOR_GRAY}==============================${COLOR_NONE}"
+    echo -e "${COLOR_PURPLE}$1${COLOR_NONE}"
+    echo -e "${COLOR_GRAY}==============================${COLOR_NONE}"
 }
 
 #error() {
@@ -24,11 +23,12 @@ title() {
 #}
 
 info() {
-    echo "${COLOR_BLUE}Info: ${COLOR_NONE}$1"
+    echo -e "${COLOR_BLUE}Info: ${COLOR_NONE}$1"
 }
 
 success() {
-    echo "${COLOR_GREEN}$1${COLOR_NONE}"
+    # echo -e "${COLOR_GREEN}$1${COLOR_NONE}"
+    echo "Done."
 }
 
 setup_symlinks() {
@@ -40,7 +40,7 @@ setup_symlinks() {
        info "Adding symlink to zshrc at $HOME/.zshrc"
        ln -s "$zshrc" ~/.zshrc
    else
-       info "~/.zshrc already exists... Skipping."
+       info "$HOME/.zshrc already exists... Skipping."
    fi
    
    info "installing to ~/.zsh"
@@ -108,6 +108,13 @@ setup_shell() {
         chsh -s "$zsh_path"
         info "default shell changed to $zsh_path"
     fi
+
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+      info "Installing oh-my-zsh..."
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    else
+      info "oh-my-zsh is already installed."
+    fi
 }
 
 setup_git() {
@@ -123,7 +130,7 @@ setup_git() {
     git config --global user.email "${email:-$defaultEmail}"
 
     read -rp "Save user and password to an unencrypted file to avoid writing? [y/N] " save
-    if [ $save = y ]; then
+    if [ "$save" = "y" ]; then
         git config --global credential.helper "store"
     else
         git config --global credential.helper "cache --timeout 3600"
@@ -137,7 +144,7 @@ case "$1" in
     git)
         setup_git
         ;;
-    homebrew)
+    brew)
         setup_homebrew
         ;;
     shell)

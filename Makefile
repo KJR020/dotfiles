@@ -1,26 +1,26 @@
+# Define color variables
+COLOR_BLUE := \033[0;34m
+COLOR_GREEN := \033[0;32m
+COLOR_RESET := \033[0m
+
 # Do everything.
 all: init link defaults brew
 
 # Set initial preference.
 init:
-	@echo "\033[0;34mRun init.sh\033[0m"
-	@.bin/init.sh
-	@echo "\033[0;34mDone.\033[0m"
+	@echo "$(COLOR_BLUE)Run init.sh$(COLOR_RESET)"
+	.bin/mac/install.sh all
+	@echo "$(COLOR_BLUE)Done.$(COLOR_RESET)"
 
 # Link dotfiles.
 link:
-	@echo "\033[0;34mRun link.sh\033[0m"
-	@.bin/link.sh
-	@echo "\033[0;32mDone.\033[0m"
-
-# Set macOS system preferences.
-defaults:
-	@echo "\033[0;34mRun defaults.sh\033[0m"
-	@.bin/defaults.sh
-	@echo "\033[0;32mDone.\033[0m"
+	@echo "$(COLOR_BLUE)Run link.sh$(COLOR_RESET)"
+	.bin/mac/install.sh link
+	@echo "$(COLOR_GREEN)Done.$(COLOR_RESET)"
 
 # Install macOS applications.
 brew:
-	@echo "\033[0;34mRun brew.sh\033[0m"
-	@.bin/brew.sh
-	@echo "\033[0;32mDone.\033[0m"
+	@echo "$(COLOR_BLUE)Run brew.sh$(COLOR_RESET)"
+	.bin/brew.sh
+	@echo "$(COLOR_GREEN)Done.$(COLOR_RESET)"
+
