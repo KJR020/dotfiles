@@ -73,4 +73,6 @@
 !.bashrc
 !.bash_profile
 !.vrapperrc
+!.zshrc
+!Brewfile
 !Makefile
