@@ -26,7 +26,6 @@
   },
   "atcoderExtension.python.checker": "python --version",
   "atcoderExtension.python.executor": "python -u $tastily",
-  "chatgpt.chromiumPath": "C:\\Program Files\\Google\\Chrome\\Application",
   "codesandbox.currentWorkspace": "3a0c1115-219a-4070-9a31-d037e232ac75",
   "cSpell.userWords": [
     "Allusers",
@@ -73,7 +72,6 @@
     "windir",
     "zenhan"
   ],
-  "editor.defaultFormatter": "ms-python.black-formatter",
   "editor.detectIndentation": false,
   "editor.inlineSuggest.enabled": true,
   // "editor.accessibilitySupport": "off",
@@ -174,8 +172,6 @@
   },
   "vim.autoSwitchInputMethod.defaultIM": "0",
   "vim.autoSwitchInputMethod.enable": true,
-  "vim.autoSwitchInputMethod.obtainIMCmd": "C:\\tools\\zenhan.exe",
-  "vim.autoSwitchInputMethod.switchIMCmd": "C:\\tools\\zenhan.exe {im}",
   "vim.commandLineModeKeyBindings": [],
   "vim.foldfix": true,
   "vim.hlsearch": true,
@@ -194,9 +190,7 @@
   "vim.surround": true,
   "vim.useSystemClipboard": true,
   "vim.vimrc.enable": true,
-  "vim.vimrc.path": "C:\\Users\\Kojiro\\.vimrc",
   "vim.visualstar": true,
-  "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\Kojiro\\AppData\\Local\\nvim\\init.vim",
   "editor.tabSize": 2,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[django-html]": {
