@@ -1,0 +1,217 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "darkriszty.markdown-table-prettify"
+  },
+  "[python]": {
+    "editor.formatOnType": true,
+    "editor.wordBasedSuggestions": "off",
+    "editor.tabSize": 4
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "atcoderExtension.python.checker": "python --version",
+  "atcoderExtension.python.executor": "python -u $tastily",
+  "chatgpt.chromiumPath": "C:\\Program Files\\Google\\Chrome\\Application",
+  "codesandbox.currentWorkspace": "3a0c1115-219a-4070-9a31-d037e232ac75",
+  "cSpell.userWords": [
+    "Allusers",
+    "atcoder",
+    "Chakra",
+    "clippy",
+    "Cmder",
+    "codesandbox",
+    "darkriszty",
+    "donot",
+    "echarts",
+    "esbenp",
+    "filterset",
+    "foldfix",
+    "Gantt",
+    "graphene",
+    "graphiql",
+    "hlsearch",
+    "inputbox",
+    "jsonify",
+    "Kasada",
+    "Kojiro",
+    "nbytes",
+    "neovim",
+    "nohl",
+    "nojekyll",
+    "onsubmit",
+    "proconio",
+    "pygame",
+    "pytest",
+    "pytz",
+    "rubberduck",
+    "scminput",
+    "simplejwt",
+    "streamlit",
+    "Sysnative",
+    "tabnine",
+    "tailwindcss",
+    "todos",
+    "trycloudflare",
+    "viewsets",
+    "vimrc",
+    "visualstar",
+    "windir",
+    "zenhan"
+  ],
+  "editor.defaultFormatter": "ms-python.black-formatter",
+  "editor.detectIndentation": false,
+  "editor.inlineSuggest.enabled": true,
+  // "editor.accessibilitySupport": "off",
+  "editor.minimap.enabled": false,
+  "emmet.showSuggestionsAsSnippets": true,
+  "files.associations": {
+    "*.tsx": "typescriptreact"
+  },
+  "files.autoGuessEncoding": true,
+  "files.exclude": {
+    "**/.git": false
+  },
+  "git.confirmSync": false,
+  "github.copilot.advanced": {},
+  "github.copilot.chat.localeOverride": "ja",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": false,
+    "scminput": false
+  },
+  "githubIssues.queries": [
+    {
+      "groupBy": ["milestone"],
+      "label": "My Issues",
+      "query": "is:open assignee:${user} repo:${owner}/${repository}"
+    },
+    {
+      "label": "Created Issues",
+      "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+    },
+    {
+      "label": "Recent Issues",
+      "query": "state:open repo:${owner}/${repository} sort:updated-desc"
+    }
+  ],
+  "json.schemas": [],
+  "launch": {
+    "compounds": [],
+    "configurations": []
+  },
+  "liveServer.settings.ChromeDebuggingAttachment": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "python.defaultInterpreterPath": "",
+  "python.formatting.blackPath": "",
+  "python.formatting.provider": "black",
+  "python.testing.cwd": "",
+  "python.testing.pytestEnabled": true,
+  "pythonTestExplorer.testFramework": "pytest",
+  "remote.SSH.remotePlatform": {
+    "diane-ha-deals-everybody.trycloudflare.com": "linux",
+    "dns-screensavers-might-demonstrates.trycloudflare.com": "linux",
+    "got-factor-rotary-flood.trycloudflare.com": "linux",
+    "naturals-cruz-purse-failures.trycloudflare.com": "linux",
+    "rising-privileges-attending-dominant.trycloudflare.com": "linux",
+    "sandbox.4rng.csb": "linux",
+    "sandbox.tc6s47.csb": "linux"
+  },
+  "rubberduck.openAI.baseUrl": "https://api.openai.com/v1/chat/completions/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",
+  "rust-analyzer.cargo.allFeatures": true,
+  "rust-analyzer.cargo.features": [],
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.checkOnSave.extraArgs": [
+    "--",
+    "-A",
+    "clippy::needless_return"
+  ],
+  "security.workspace.trust.untrustedFiles": "open",
+  "settingsSync.ignoredSettings": [],
+  "tabnine.experimentalAutoImports": true,
+  "terminal.integrated.autoReplies": {},
+  "terminal.integrated.defaultProfile.windows": "Cmder Bash",
+  "terminal.integrated.env.windows": {
+    "PSExecutionPolicyPreference": "RemoteSigned"
+  },
+  "terminal.integrated.profiles.windows": {
+    "Cmder Bash": {
+      "args": ["--login", "-i"],
+      "source": "Git Bash"
+    },
+    "Command Prompt": {
+      "args": [],
+      "icon": "terminal-cmd",
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ]
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "PowerShell": {
+      "icon": "terminal-powershell",
+      "source": "PowerShell"
+    }
+  },
+  "vim.autoSwitchInputMethod.defaultIM": "0",
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.obtainIMCmd": "C:\\tools\\zenhan.exe",
+  "vim.autoSwitchInputMethod.switchIMCmd": "C:\\tools\\zenhan.exe {im}",
+  "vim.commandLineModeKeyBindings": [],
+  "vim.foldfix": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "after": ["Esc"],
+      "before": ["j", "j"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    }
+  ],
+  "vim.surround": true,
+  "vim.useSystemClipboard": true,
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "C:\\Users\\Kojiro\\.vimrc",
+  "vim.visualstar": true,
+  "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\Kojiro\\AppData\\Local\\nvim\\init.vim",
+  "editor.tabSize": 2,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[django-html]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "accessibility.signalOptions.volume": 20,
+  "editor.formatOnSave": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "python.terminal.activateEnvInCurrentTerminal": true
+}
