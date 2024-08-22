@@ -1,4 +1,15 @@
 {
+  "[django-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "comments": true,
+      "other": true,
+      "strings": true
+    }
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2
@@ -10,9 +21,10 @@
     "editor.defaultFormatter": "darkriszty.markdown-table-prettify"
   },
   "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnType": true,
-    "editor.wordBasedSuggestions": "off",
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.wordBasedSuggestions": "off"
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
@@ -24,13 +36,14 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "accessibility.signalOptions.volume": 20,
   "atcoderExtension.python.checker": "python --version",
   "atcoderExtension.python.executor": "python -u $tastily",
-  "codesandbox.currentWorkspace": "3a0c1115-219a-4070-9a31-d037e232ac75",
   "cSpell.userWords": [
     "Allusers",
     "atcoder",
     "Chakra",
+    "charliermarsh",
     "clippy",
     "Cmder",
     "codesandbox",
@@ -72,10 +85,13 @@
     "windir",
     "zenhan"
   ],
+  "codesandbox.currentWorkspace": "3a0c1115-219a-4070-9a31-d037e232ac75",
   "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   // "editor.accessibilitySupport": "off",
   "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
   "emmet.showSuggestionsAsSnippets": true,
   "files.associations": {
     "*.tsx": "typescriptreact"
@@ -117,9 +133,11 @@
   "liveServer.settings.ChromeDebuggingAttachment": false,
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
+  "python.createEnvironment.trigger": "off",
   "python.defaultInterpreterPath": "",
   "python.formatting.blackPath": "",
   "python.formatting.provider": "black",
+  "python.terminal.activateEnvInCurrentTerminal": true,
   "python.testing.cwd": "",
   "python.testing.pytestEnabled": true,
   "pythonTestExplorer.testFramework": "pytest",
@@ -170,6 +188,7 @@
       "source": "PowerShell"
     }
   },
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.autoSwitchInputMethod.defaultIM": "0",
   "vim.autoSwitchInputMethod.enable": true,
   "vim.commandLineModeKeyBindings": [],
@@ -191,21 +210,5 @@
   "vim.useSystemClipboard": true,
   "vim.vimrc.enable": true,
   "vim.visualstar": true,
-  "editor.tabSize": 2,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[django-html]": {
-    "editor.quickSuggestions": {
-      "other": true,
-      "comments": true,
-      "strings": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "accessibility.signalOptions.volume": 20,
-  "editor.formatOnSave": true,
-  "workbench.iconTheme": "material-icon-theme",
-  "python.terminal.activateEnvInCurrentTerminal": true
+  "workbench.iconTheme": "material-icon-theme"
 }
