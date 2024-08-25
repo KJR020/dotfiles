@@ -36,6 +36,7 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "autoDocstring.docstringFormat": "sphinx",
   "accessibility.signalOptions.volume": 20,
   "atcoderExtension.python.checker": "python --version",
   "atcoderExtension.python.executor": "python -u $tastily",
@@ -58,6 +59,7 @@
     "graphiql",
     "hlsearch",
     "inputbox",
+    "isocalender",
     "jsonify",
     "Kasada",
     "Kojiro",
@@ -70,9 +72,11 @@
     "pygame",
     "pytest",
     "pytz",
+    "rtype",
     "rubberduck",
     "scminput",
     "simplejwt",
+    "sjis",
     "streamlit",
     "Sysnative",
     "tabnine",
@@ -210,5 +214,6 @@
   "vim.useSystemClipboard": true,
   "vim.vimrc.enable": true,
   "vim.visualstar": true,
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "python.venvPath": "{}"
 }
