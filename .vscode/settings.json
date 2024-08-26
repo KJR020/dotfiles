@@ -217,5 +217,6 @@
   "vim.visualstar": true,
   "workbench.iconTheme": "material-icon-theme",
   "python.venvPath": "{}",
-  "makefile.configureOnOpen": false
+  "makefile.configureOnOpen": false,
+  "editor.accessibilitySupport": "off"
 }
