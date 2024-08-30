@@ -5,7 +5,7 @@
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
-evel "$(zoxide init bash)"
+eval "$(zoxide init bash)"
 
 alias python="python3" 
 alias pip="pip3" 
