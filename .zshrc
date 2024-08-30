@@ -14,7 +14,11 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Load Oh My Zsh plugins
-plugins=(git)
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
 # Source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
@@ -22,6 +26,9 @@ source $ZSH/oh-my-zsh.sh
 # ----------------------------
 # User-specific Configuration
 # ----------------------------
+
+# Prompt configuration
+PROMPT='%~ %F{green}$(git_prompt_info)%f:%# '
 
 # Set preferred editor based on connection type
 if [[ -n $SSH_CONNECTION ]]; then
@@ -31,7 +38,7 @@ else
 fi
 
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
+eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
 # Custom Python aliases
