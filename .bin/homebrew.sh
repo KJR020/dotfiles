@@ -1,4 +1,3 @@
-#!/bin/bash
 COLOR_BLUE="\033[1;34m"
 COLOR_NONE="\033[0m"
 

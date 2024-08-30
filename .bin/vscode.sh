@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # OSを判別
 OS="$(uname)"
 if [[ "$OS" == "Darwin" ]]; then
