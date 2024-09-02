@@ -218,5 +218,8 @@
   "workbench.iconTheme": "material-icon-theme",
   "python.venvPath": "{}",
   "makefile.configureOnOpen": false,
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "testing.coverageToolbarEnabled": true,
+  "git.ignoreRebaseWarning": true,
+  "githubPullRequests.pullBranch": "never"
 }
