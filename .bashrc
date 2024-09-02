@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# simulating the `tree` command for Windows GitBash 
-# alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g'"
+if OSTYPE="Darwin"; then
+  eval "$(fzf --bash)"
+  eval "$(zoxide init bash)"
 
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
-evel "$(zoxide init bash)"
+  alias python="python3" 
+  alias pip="pip3" 
 
-alias python="python3" 
-alias pip="pip3" 
+elif OSTYPE="msys"; then
+  alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g'"
+  
+fi
