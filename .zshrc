@@ -30,17 +30,17 @@ source $ZSH/oh-my-zsh.sh
 # Prompt configuration
 PROMPT='%~ %F{green}$(git_prompt_info)%f:%# '
 
-# Set preferred editor based on connection type
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# # Set preferred editor based on connection type
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
 # Custom Python aliases
-alias python="/usr/local/opt/python@3.12/bin/python3"
-alias pip="/usr/local/opt/python@3.12/bin/pip3"
+alias python="python3"
+alias pip="pip3"
