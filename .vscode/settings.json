@@ -1,11 +1,11 @@
 {
   "[django-html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
       "comments": true,
       "other": true,
       "strings": true
-    }
+    },
+    "editor.defaultFormatter": "monosans.djlint"
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -64,6 +64,7 @@
     "jsonify",
     "Kasada",
     "Kojiro",
+    "Logicool",
     "nbytes",
     "neovim",
     "nohl",
@@ -84,6 +85,7 @@
     "tailwindcss",
     "todos",
     "trycloudflare",
+    "usefixtures",
     "viewsets",
     "vimrc",
     "visualstar",
@@ -221,5 +223,8 @@
   "editor.accessibilitySupport": "off",
   "testing.coverageToolbarEnabled": true,
   "git.ignoreRebaseWarning": true,
-  "githubPullRequests.pullBranch": "never"
+  "githubPullRequests.pullBranch": "never",
+  "djlint.blankLineAfterTag": ["load,extends,include"],
+  "djlint.blankLineBeforeTag": ["load,extends,include, block"],
+  "diffEditor.ignoreTrimWhitespace": false
 }
