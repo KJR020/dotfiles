@@ -2,6 +2,12 @@
 
 This repository contains my dotfiles.
 
+## brewfile更新
+
+```shell
+brew bundle dump --force
+```
+
 ## 参考
 
 - <https://qiita.com/yutkat/items/c6c7584d9795799ee164>

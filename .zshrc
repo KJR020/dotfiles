@@ -44,3 +44,4 @@ eval "$(zoxide init zsh)"
 # Custom Python aliases
 alias python="python3"
 alias pip="pip3"
+source "$HOME/.rye/env"

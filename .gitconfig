@@ -12,5 +12,12 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  lg = log --oneline --graph --all
+	delete-merged-branches = !git branch --merged | grep -vE '\\*|main$|master$|develop$' | xargs -I % git branch -d %
 [ghq]
 	root = /Users/kojiro/work
