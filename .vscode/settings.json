@@ -51,7 +51,9 @@
     "Cmder",
     "codegen",
     "codesandbox",
+    "composables",
     "createsuperuser",
+    "CSRFTOKEN",
     "darkriszty",
     "datatable",
     "Descs",
@@ -59,6 +61,7 @@
     "donot",
     "dotfiles",
     "echarts",
+    "Efem",
     "errorlist",
     "esbenp",
     "factoryboy",
@@ -70,6 +73,7 @@
     "graphene",
     "graphiql",
     "hlsearch",
+    "hoge",
     "inputbox",
     "isocalender",
     "isort",
@@ -266,6 +270,9 @@
   "leetcode.workspaceFolder": "/Users/kojiro/work/leetcode",
   "githubPullRequests.fileListLayout": "tree",
   "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
