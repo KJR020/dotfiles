@@ -8,6 +8,13 @@ This repository contains my dotfiles.
 brew bundle dump --force
 ```
 
+## memo
+
+- OhMyZshのinstallがない
+- 移行アシスタントでinstallしたアプリがbrew installでエラーになる
+- VSCodeのsettings.jsonのsymlink
+  - いらないかも
+
 ## 参考
 
 - <https://qiita.com/yutkat/items/c6c7584d9795799ee164>
