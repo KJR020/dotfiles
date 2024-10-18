@@ -8,9 +8,6 @@ all: setup brew
 
 setup:
 
-  # 実行権限(x:execute)を付与
-	@echo "$(COLOR_BLUE)Setting executable permissions and running setup.sh$(COLOR_RESET)"
-	chmod +x symlinks.sh homebrew.sh shell.sh git.sh 
   # symlinkを作成
 	@echo "$(COLOR_BLUE)Creating symlinks$(COLOR_RESET)"
   ## .zshrcのsymlinkを作成
