@@ -27,7 +27,7 @@ symlink:
 	else \
 		echo "$$HOME/.vimrc already exists... Skipping."; \
 	fi
-
+  ## .gitconfigのsymlinkを作成
 	@if [ ! -e "$$HOME/.gitconfig"]; then \
     ln -s "$(PWD)/.gitconfig" "$$HOME/.gitconfig"; \
     echo "$(COLOR_GREEN)Added symlink to gitconfig at $$HOME/.gitconfig$(COLOR_RESET)"; \
@@ -47,6 +47,9 @@ setup-tools:
 		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"; \
 	fi
 	@echo "$(COLOR_GREEN)Setup complete.$(COLOR_RESET)"
+
+  ## oh-my-zshのinstall
+	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install macOS applications.
 brew-install:
