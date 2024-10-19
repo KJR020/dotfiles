@@ -20,4 +20,4 @@
   lg = log --oneline --graph --all
 	delete-merged-branches = !git branch --merged | grep -vE '\\*|main$|master$|develop$' | xargs -I % git branch -d %
 [ghq]
-	root = /Users/kojiro/work
+    root = !echo /Users/$(whoami)/work
