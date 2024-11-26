@@ -3,6 +3,7 @@
 	name = KJR020
 [core]
 	autocrlf = input
+	quotepath = false
 [credential]
 	helper = store
 [init]
@@ -20,4 +21,7 @@
   lg = log --oneline --graph --all
 	delete-merged-branches = !git branch --merged | grep -vE '\\*|main$|master$|develop$' | xargs -I % git branch -d %
 [ghq]
-    root = work
+  root = /Users/kjr020/work/
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = utf-
