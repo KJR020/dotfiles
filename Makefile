@@ -46,7 +46,7 @@ brew:
 	.bin/brew.sh
 	@echo "$(COLOR_GREEN)Done.$(COLOR_RESET)"
 
-update-brewfile:
+update-brew:
 	@echo "$(COLOR_BLUE)Updating Brewfile$(COLOR_RESET)"
 	brew bundle dump --force
 	@echo "$(COLOR_GREEN)Brewfile updated.$(COLOR_RESET)"	
