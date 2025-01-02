@@ -6,8 +6,7 @@ COLOR_RESET := \033[0m
 # すべてのターゲットを実行
 all: setup brew
 
-setup:
-
+symlink:
   # symlinkを作成
 	@echo "$(COLOR_BLUE)Creating symlinks$(COLOR_RESET)"
   ## .zshrcのsymlinkを作成
@@ -28,7 +27,16 @@ setup:
 	else \
 		echo "$$HOME/.vimrc already exists... Skipping."; \
 	fi
+  ## .gitconfigのsymlinkを作成
+	@if [ ! -e "$$HOME/.gitconfig"]; then \
+    ln -s "$(PWD)/.gitconfig" "$$HOME/.gitconfig"; \
+    echo "$(COLOR_GREEN)Added symlink to gitconfig at $$HOME/.gitconfig$(COLOR_RESET)"; \
+  else \
+    echo "$$HOME/.gitconfig already exists... Skipping."; \
+  fi
 
+
+setup-tools:
   # Homebrewの設定
 	@echo "$(COLOR_BLUE)Setting up Homebrew$(COLOR_RESET)"
   ## Homebrewのinstall
@@ -40,10 +48,13 @@ setup:
 	fi
 	@echo "$(COLOR_GREEN)Setup complete.$(COLOR_RESET)"
 
+  ## oh-my-zshのinstall
+	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Install macOS applications.
-brew:
+brew-install:
 	@echo "$(COLOR_BLUE)Run brew.sh$(COLOR_RESET)"
-	.bin/brew.sh
+	brew bundle
 	@echo "$(COLOR_GREEN)Done.$(COLOR_RESET)"
 
 update-brew:
