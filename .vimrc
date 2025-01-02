@@ -29,6 +29,9 @@ set autoindent
 " システムのクリップボードを使用する
 set clipboard=unnamed,autoselect
 
+" 置換した際に、置換した文字列をヤンクしない
+vnoremap p "_dP
+
 
 " Editor-Settings{{{
 " Encoding{{{
