@@ -69,11 +69,8 @@
 !/.vscode/
 !/.vscode/*
 
-!.gitconfig
-!.bashrc
-!.bash_profile
-!.zprofile
-!.vrapperrc
-!.zshrc
+!/config/
+!/scripts/
 !Brewfile
 !Makefile
+!.install.sh
