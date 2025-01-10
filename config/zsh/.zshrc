@@ -117,4 +117,14 @@ setopt correct
 setopt notify
 
 # プロンプトカスタマイズ
-PROMPT='%F{cyan}%~%f %F{green}$(git_prompt_info)%f$ '
+# パスの省略表示を有効化
+setopt prompt_subst
+function prompt_pwd() {
+    local pwd="${PWD/#$HOME/~}"
+    if [[ "$pwd" == (#m)[/~] ]]; then
+        print "$MATCH"
+    else
+        print "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+    fi
+}
+PROMPT='%F{cyan}$(prompt_pwd)%f %F{green}$(git_prompt_info)%f$ '
