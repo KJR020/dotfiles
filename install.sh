@@ -62,6 +62,16 @@ ln -sf "$CONFIG_DIR/bash/.bashrc" "$HOME/.bashrc"
 # Vim設定のシンボリックリンク
 ln -sf "$CONFIG_DIR/vim/.vimrc" "$HOME/.vimrc"
 
+# MCP設定のシンボリックリンク
+echo "🔗 Creating MCP configuration symbolic links..."
+# VSCode用MCP設定
+mkdir -p "$HOME/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings"
+ln -sf "$CONFIG_DIR/mcp/vscode.json" "$HOME/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json"
+
+# Claude Desktop用MCP設定
+mkdir -p "$HOME/Library/Application Support/Claude"
+ln -sf "$CONFIG_DIR/mcp/claude.json" "$HOME/Library/Application Support/Claude/claude_desktop_config.json"
+
 # fzfのインストール
 if [ ! -f "$HOME/.fzf.zsh" ]; then
     echo "🔍 Installing fzf..."
