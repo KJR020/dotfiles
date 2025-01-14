@@ -9,7 +9,7 @@
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/kjr020"]
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${HOME}"]
     },
     "time": {
       "command": "uvx",
