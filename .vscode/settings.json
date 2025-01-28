@@ -286,5 +286,13 @@
   },
   "diffEditor.hideUnchangedRegions.enabled": true,
   "markdown.extension.list.indentationSize": "inherit",
-  "vue.server.hybridMode": "typeScriptPluginOnly"
+  "vue.server.hybridMode": "typeScriptPluginOnly",
+  "roo-cline.allowedCommands": [
+    "npm test",
+    "npm install",
+    "tsc",
+    "git log",
+    "git diff",
+    "git show"
+  ]
 }
