@@ -16,7 +16,7 @@ alias dc='docker-compose'
 alias dps='docker ps'
 alias dex='docker exec -it'
 alias dl='docker logs'
-alias docker-clear-dangling='docker rmi -f (docker images -f \"dangling=true\" -q)'
+alias docker-clear-dangling='docker rmi -f $(docker images -f \"dangling=true\" -q)'
 
 # ナビゲーション
 alias ..='cd ..'

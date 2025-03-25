@@ -128,3 +128,11 @@ function prompt_pwd() {
     fi
 }
 PROMPT='%F{cyan}$(prompt_pwd)%f %F{green}$(git_prompt_info)%f$ '
+
+# pnpm
+export PNPM_HOME="/Users/kojiro/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -28,10 +28,6 @@
     "editor.wordBasedSuggestions": "off",
     "python.envFile": ""
   },
-  "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust-analyzer",
-    "editor.formatOnSave": true
-  },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -63,6 +59,7 @@
     "Descs",
     "djlint",
     "donot",
+    "dotenv",
     "dotfiles",
     "echarts",
     "Efem",
@@ -294,5 +291,21 @@
     "git log",
     "git diff",
     "git show"
-  ]
+  ],
+  "eslint.options": {
+    "overrideConfigFile": "/Users/kojiro/work/aqua-core/marine/eslint.config.mjs"
+  },
+  "git.autofetch": true,
+  "print.folder.fileNames": true,
+  "print.folder.include": [],
+  "print.folder.exclude": [
+    "{bin,obj,out}",
+    "node_modules",
+    "data",
+    "**/*.{bin,exe,dll,hex,pdb,pdf,pfx,png,jpg,gif,bmp,suo,design}"
+  ],
+  "print.folder.maxLines": 1200,
+  "print.folder.maxFiles": 30,
+  "print.folder.includeFileList": false,
+  "git.blame.editorDecoration.enabled": true
 }
