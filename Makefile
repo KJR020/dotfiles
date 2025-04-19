@@ -2,62 +2,98 @@
 COLOR_BLUE := \033[0;34m
 COLOR_GREEN := \033[0;32m
 COLOR_RESET := \033[0m
+COLOR_YELLOW := \033[0;33m
+
+# 変数設定
+DOTFILES_DIR := $(HOME)/dotfiles
+CONFIG_DIR := $(DOTFILES_DIR)/config
 
 # すべてのターゲットを実行
-all: setup brew
+all: brew symlinks plugins
 
-symlink:
-  # symlinkを作成
-	@echo "$(COLOR_BLUE)Creating symlinks$(COLOR_RESET)"
-  ## .zshrcのsymlinkを作成
-	@echo "$(COLOR_BLUE)Creating zshrc symlinks$(COLOR_RESET)"
-  ### zshrcがすでに存在するかチェック
-	@if [ ! -e "$$HOME/.zshrc" ]; then \
-		ln -s "$(PWD)/.zshrc" "$$HOME/.zshrc"; \
-		echo "$(COLOR_GREEN)Added symlink to zshrc at $$HOME/.zshrc$(COLOR_RESET)"; \
-	else \
-		echo "$$HOME/.zshrc already exists... Skipping."; \
-	fi
-  ## .vimrcのsymlinkを作成
-	@echo "$(COLOR_BLUE)Creating vim symlinks$(COLOR_RESET)"
-  ### .vimrcがすでに存在するかチェック
-	@if [ ! -e "$$HOME/.vimrc" ]; then \
-		ln -s "$(PWD)/.vimrc" "$$HOME/.vimrc"; \
-		echo "$(COLOR_GREEN)Added symlink to vimrc at $$HOME/.vimrc$(COLOR_RESET)"; \
-	else \
-		echo "$$HOME/.vimrc already exists... Skipping."; \
-	fi
-  ## .gitconfigのsymlinkを作成
-	@if [ ! -e "$$HOME/.gitconfig"]; then \
-    ln -s "$(PWD)/.gitconfig" "$$HOME/.gitconfig"; \
-    echo "$(COLOR_GREEN)Added symlink to gitconfig at $$HOME/.gitconfig$(COLOR_RESET)"; \
-  else \
-    echo "$$HOME/.gitconfig already exists... Skipping."; \
-  fi
+# シンボリックリンクの作成
+symlinks:
+	@echo "$(COLOR_BLUE)🔗 Creating symbolic links...$(COLOR_RESET)"
+
+	@echo "$(COLOR_YELLOW)Git configuration$(COLOR_RESET)"
+	@ln -sf "$(CONFIG_DIR)/git/.gitconfig" "$(HOME)/.gitconfig"
+	@ln -sf "$(CONFIG_DIR)/git/.gitignore_global" "$(HOME)/.gitignore_global"
+	@ln -sf "$(CONFIG_DIR)/git/.gitmessage" "$(HOME)/.gitmessage"
+
+	@echo "$(COLOR_YELLOW)Zsh configuration$(COLOR_RESET)"
+	@ln -sf "$(CONFIG_DIR)/zsh/.zprofile" "$(HOME)/.zprofile"
+	@ln -sf "$(CONFIG_DIR)/zsh/.zshrc" "$(HOME)/.zshrc"
+	@mkdir -p "$(HOME)/.config/zsh"
+	@ln -sf "$(CONFIG_DIR)/zsh/aliases.zsh" "$(HOME)/.config/zsh/aliases.zsh"
+
+	@echo "$(COLOR_YELLOW)Bash configuration$(COLOR_RESET)"
+	@ln -sf "$(CONFIG_DIR)/bash/.bash_profile" "$(HOME)/.bash_profile"
+	@ln -sf "$(CONFIG_DIR)/bash/.bashrc" "$(HOME)/.bashrc"
+
+	@echo "$(COLOR_YELLOW)Vim configuration$(COLOR_RESET)"
+	@ln -sf "$(CONFIG_DIR)/vim/.vimrc" "$(HOME)/.vimrc"
+
+	@echo "$(COLOR_YELLOW)MCP configuration$(COLOR_RESET)"
+	@mkdir -p "$(HOME)/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings"
+	@ln -sf "$(CONFIG_DIR)/mcp/vscode.json" "$(HOME)/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json"
+	@mkdir -p "$(HOME)/.codeium/windsurf"
+	@ln -sf "$(CONFIG_DIR)/mcp/windsurf.json" "$(HOME)/.codeium/windsurf/mcp_config.json"
+	@mkdir -p "$(HOME)/Library/Application Support/Claude"
+	@ln -sf "$(CONFIG_DIR)/mcp/claude.json" "$(HOME)/Library/Application Support/Claude/claude_desktop_config.json"
+	@echo "$(COLOR_GREEN)Symbolic links created successfully.$(COLOR_RESET)"
 
 
-setup-tools:
-  # Homebrewの設定
-	@echo "$(COLOR_BLUE)Setting up Homebrew$(COLOR_RESET)"
-  ## Homebrewのinstall
-	@sudo apt update
-	@sudo apt install -y build-essential
+# Homebrewのインストール
+brew-setup:
+	@echo "$(COLOR_BLUE)📦 Setting up Homebrew$(COLOR_RESET)"
 	@if ! command -v brew > /dev/null; then \
 		echo "$(COLOR_BLUE)Homebrew not installed. Installing.$(COLOR_RESET)"; \
-		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"; \
+		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
+		echo 'eval "$$/opt/homebrew/bin/brew shellenv"' >> "$(HOME)/.zprofile"; \
+		eval "$$/opt/homebrew/bin/brew shellenv"; \
+	else \
+		echo "$(COLOR_GREEN)✅ Homebrew is already installed$(COLOR_RESET)"; \
 	fi
-	@echo "$(COLOR_GREEN)Setup complete.$(COLOR_RESET)"
 
-  ## oh-my-zshのinstall
-	@sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Homebrewパッケージのインストール
+brew: brew-setup
+	@echo "$(COLOR_BLUE)📦 Installing packages from Brewfile...$(COLOR_RESET)"
+	@brew bundle --file="$(DOTFILES_DIR)/Brewfile"
+	@echo "$(COLOR_GREEN)Brew packages installed successfully.$(COLOR_RESET)"
 
-# Install macOS applications.
-brew-install:
-	@echo "$(COLOR_BLUE)Run brew.sh$(COLOR_RESET)"
-	brew bundle
-	@echo "$(COLOR_GREEN)Done.$(COLOR_RESET)"
+# Oh My Zshとプラグインのインストール
+plugins:
+	@if [ ! -d "$(HOME)/.oh-my-zsh" ]; then \
+		echo "$(COLOR_BLUE)🔧 Installing Oh My Zsh...$(COLOR_RESET)"; \
+		sh -c "$$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended; \
+	else \
+		echo "$(COLOR_GREEN)✅ Oh My Zsh is already installed$(COLOR_RESET)"; \
+	fi
 
+	@if [ ! -d "$${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then \
+		echo "$(COLOR_BLUE)🔌 Installing zsh-autosuggestions...$(COLOR_RESET)"; \
+		git clone https://github.com/zsh-users/zsh-autosuggestions $${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/plugins/zsh-autosuggestions; \
+	fi
+
+	@if [ ! -d "$${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then \
+		echo "$(COLOR_BLUE)🔌 Installing zsh-syntax-highlighting...$(COLOR_RESET)"; \
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting $${ZSH_CUSTOM:-$(HOME)/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting; \
+	fi
+
+	@if [ ! -f "$(HOME)/.fzf.zsh" ]; then \
+		echo "$(COLOR_BLUE)🔍 Installing fzf...$(COLOR_RESET)"; \
+		$$(brew --prefix)/opt/fzf/install --all; \
+	fi
+	@echo "$(COLOR_GREEN)Plugins installed successfully.$(COLOR_RESET)"
+
+# Brewfileの更新
 update-brew:
 	@echo "$(COLOR_BLUE)Updating Brewfile$(COLOR_RESET)"
-	brew bundle dump --force
-	@echo "$(COLOR_GREEN)Brewfile updated.$(COLOR_RESET)"	
+	@brew bundle dump --force
+	@echo "$(COLOR_GREEN)Brewfile updated.$(COLOR_RESET)"
+
+# インストール完了メッセージ
+.PHONY: all brew symlinks plugins brew-setup update-brew
+
+install: all
+	@echo "$(COLOR_GREEN)✨ Installation complete! Please restart your terminal.$(COLOR_RESET)"
