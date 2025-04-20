@@ -3,6 +3,7 @@
 ### all ignore ###
 /*
 /.**
+/*/*
 
 # .gitignoreは上から解釈されていくので
 # 管理対象のファイルをホワイトリストのように追記します
@@ -74,3 +75,6 @@
 !Brewfile
 !Makefile
 !install.sh
+
+!/config/mcp_settings.jsonnet
+!/config/secrets.jsonnet.template
