@@ -59,7 +59,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # エイリアスとカスタム関数
 # ----------------------------
 # エイリアスの読み込み
-source ~/.dotfiles/config/zsh/aliases.zsh
+[ -f ~/.aliases.zsh ] && source ~/.aliases.zsh
 
 # ----------------------------
 # ツール設定

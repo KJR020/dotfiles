@@ -8,39 +8,58 @@ COLOR_YELLOW := \033[0;33m
 DOTFILES_DIR := $(HOME)/dotfiles
 CONFIG_DIR := $(DOTFILES_DIR)/config
 
+.PHONY: all brew ln-git ln-zsh ln-bash ln-vim ln-code-mcp ln-claude-mcp ln-windsurf-mcp plugins brew-setup update-brew install
+
 # すべてのターゲットを実行
-all: brew symlinks plugins
+all: brew ln-git ln-zsh ln-bash ln-vim ln-code-mcp ln-claude-mcp ln-windsurf-mcp plugins
 
-# シンボリックリンクの作成
-symlinks:
-	@echo "$(COLOR_BLUE)🔗 Creating symbolic links...$(COLOR_RESET)"
-
-	@echo "$(COLOR_YELLOW)Git configuration$(COLOR_RESET)"
+# シンボリックリンクの作成 - Git設定
+ln-git:
+	@echo "$(COLOR_BLUE)🔗 Creating Git symbolic links...$(COLOR_RESET)"
 	@ln -sf "$(CONFIG_DIR)/git/.gitconfig" "$(HOME)/.gitconfig"
 	@ln -sf "$(CONFIG_DIR)/git/.gitignore_global" "$(HOME)/.gitignore_global"
 	@ln -sf "$(CONFIG_DIR)/git/.gitmessage" "$(HOME)/.gitmessage"
+	@echo "$(COLOR_GREEN)Git symbolic links created successfully.$(COLOR_RESET)"
 
-	@echo "$(COLOR_YELLOW)Zsh configuration$(COLOR_RESET)"
+# シンボリックリンクの作成 - Zsh設定
+ln-zsh:
+	@echo "$(COLOR_BLUE)🔗 Creating Zsh symbolic links...$(COLOR_RESET)"
 	@ln -sf "$(CONFIG_DIR)/zsh/.zprofile" "$(HOME)/.zprofile"
 	@ln -sf "$(CONFIG_DIR)/zsh/.zshrc" "$(HOME)/.zshrc"
 	@mkdir -p "$(HOME)/.config/zsh"
 	@ln -sf "$(CONFIG_DIR)/zsh/aliases.zsh" "$(HOME)/.config/zsh/aliases.zsh"
+	@echo "$(COLOR_GREEN)Zsh symbolic links created successfully.$(COLOR_RESET)"
 
-	@echo "$(COLOR_YELLOW)Bash configuration$(COLOR_RESET)"
+# シンボリックリンクの作成 - Bash設定
+ln-bash:
+	@echo "$(COLOR_BLUE)🔗 Creating Bash symbolic links...$(COLOR_RESET)"
 	@ln -sf "$(CONFIG_DIR)/bash/.bash_profile" "$(HOME)/.bash_profile"
 	@ln -sf "$(CONFIG_DIR)/bash/.bashrc" "$(HOME)/.bashrc"
+	@echo "$(COLOR_GREEN)Bash symbolic links created successfully.$(COLOR_RESET)"
 
-	@echo "$(COLOR_YELLOW)Vim configuration$(COLOR_RESET)"
+# シンボリックリンクの作成 - Vim設定
+ln-vim:
+	@echo "$(COLOR_BLUE)🔗 Creating Vim symbolic links...$(COLOR_RESET)"
 	@ln -sf "$(CONFIG_DIR)/vim/.vimrc" "$(HOME)/.vimrc"
+	@echo "$(COLOR_GREEN)Vim symbolic links created successfully.$(COLOR_RESET)"
 
-	@echo "$(COLOR_YELLOW)MCP configuration$(COLOR_RESET)"
-	@mkdir -p "$(HOME)/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings"
-	@ln -sf "$(CONFIG_DIR)/mcp/vscode.json" "$(HOME)/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json"
-	@mkdir -p "$(HOME)/.codeium/windsurf"
-	@ln -sf "$(CONFIG_DIR)/mcp/windsurf.json" "$(HOME)/.codeium/windsurf/mcp_config.json"
+# シンボリックリンクの作成 - MCP設定
+ln-code-mcp:
+	@ln -sf "$(CONFIG_DIR)/mcp/secrets.jsonnet.template" "$(HOME)/Library/Application Support/Code/User/settings.json"
+	@mkdir -p "$(HOME)/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/mcp_settings.json"
+	@ln -sf "$(CONFIG_DIR)/mcp/mcp_settings.json" "$(HOME)/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/mcp_settings.json"
+
+ln-claude-mcp:
 	@mkdir -p "$(HOME)/Library/Application Support/Claude"
 	@ln -sf "$(CONFIG_DIR)/mcp/claude.json" "$(HOME)/Library/Application Support/Claude/claude_desktop_config.json"
-	@echo "$(COLOR_GREEN)Symbolic links created successfully.$(COLOR_RESET)"
+
+ln-windsurf-mcp:
+	@mkdir -p "$(HOME)/.codeium/windsurf"
+	@ln -sf "$(CONFIG_DIR)/mcp/windsurf.json" "$(HOME)/.codeium/windsurf/mcp_config.json"
+
+# すべてのシンボリックリンクを作成
+symlinks: ln-git ln-zsh ln-bash ln-vim ln-code-mcp ln-claude-mcp ln-windsurf-mcp
+	@echo "$(COLOR_GREEN)All symbolic links created successfully.$(COLOR_RESET)"
 
 
 # Homebrewのインストール
@@ -60,6 +79,12 @@ brew: brew-setup
 	@echo "$(COLOR_BLUE)📦 Installing packages from Brewfile...$(COLOR_RESET)"
 	@brew bundle --file="$(DOTFILES_DIR)/Brewfile"
 	@echo "$(COLOR_GREEN)Brew packages installed successfully.$(COLOR_RESET)"
+
+# Brewfileの更新
+update-brew:
+	@echo "$(COLOR_BLUE)Updating Brewfile$(COLOR_RESET)"
+	@brew bundle dump --force
+	@echo "$(COLOR_GREEN)Brewfile updated.$(COLOR_RESET)"
 
 # Oh My Zshとプラグインのインストール
 plugins:
@@ -85,15 +110,3 @@ plugins:
 		$$(brew --prefix)/opt/fzf/install --all; \
 	fi
 	@echo "$(COLOR_GREEN)Plugins installed successfully.$(COLOR_RESET)"
-
-# Brewfileの更新
-update-brew:
-	@echo "$(COLOR_BLUE)Updating Brewfile$(COLOR_RESET)"
-	@brew bundle dump --force
-	@echo "$(COLOR_GREEN)Brewfile updated.$(COLOR_RESET)"
-
-# インストール完了メッセージ
-.PHONY: all brew symlinks plugins brew-setup update-brew
-
-install: all
-	@echo "$(COLOR_GREEN)✨ Installation complete! Please restart your terminal.$(COLOR_RESET)"
