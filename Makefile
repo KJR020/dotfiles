@@ -86,6 +86,11 @@ update-brew:
 	@brew bundle dump --force
 	@echo "$(COLOR_GREEN)Brewfile updated.$(COLOR_RESET)"
 
+cleanup-brew:
+	@echo "$(COLOR_BLUE)Cleaning up Homebrew$(COLOR_RESET)"
+	@brew bundle --cleanup
+	@echo "$(COLOR_GREEN)Homebrew cleanup completed.$(COLOR_RESET)"
+
 # Oh My Zshとプラグインのインストール
 plugins:
 	@if [ ! -d "$(HOME)/.oh-my-zsh" ]; then \
