@@ -78,3 +78,12 @@
 
 !/config/mcp_settings.jsonnet
 !/config/secrets.jsonnet.template
+
+# chezmoi
+!/home/
+!/install/
+!/tests/
+!task.md
+
+# chezmoi private files (秘密情報)
+/home/private_*
