@@ -33,7 +33,13 @@ plugins=(
   golang
 )
 
-source $ZSH/oh-my-zsh.sh
+# Oh My Zshの読み込み（存在確認付き）
+if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
+  source $ZSH/oh-my-zsh.sh
+else
+  echo "Warning: Oh My Zsh not found. Please install it first:"
+  echo "sh -c \"\$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
+fi
 
 # ----------------------------
 # パス設定
@@ -132,7 +138,18 @@ function prompt_pwd() {
         print "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
     fi
 }
-PROMPT='%F{cyan}$(prompt_pwd)%f %F{green}$(git_prompt_info)%f$ '
+
+# Git情報を表示する関数（Oh My Zshが利用できない場合の代替）
+function safe_git_prompt_info() {
+    if command -v git_prompt_info >/dev/null 2>&1; then
+        git_prompt_info
+    elif git rev-parse --git-dir >/dev/null 2>&1; then
+        local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+        echo "git:($branch)"
+    fi
+}
+
+PROMPT='%F{cyan}$(prompt_pwd)%f %F{green}$(safe_git_prompt_info)%f$ '
 
 # pnpm
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
@@ -151,3 +168,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 
 PATH=~/.console-ninja/.bin:$PATH
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/kojiro.kasada/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
