@@ -41,6 +41,13 @@ main() {
         print_warning "install-oh-my-zsh.sh not found, skipping"
     fi
 
+    # 3. VS Codeのセットアップ
+    if [[ -f "$SCRIPT_DIR/install-vscode.sh" ]]; then
+        bash "$SCRIPT_DIR/install-vscode.sh"
+    else
+        print_warning "install-vscode.sh not found, skipping"
+    fi
+
     print_success "All installations completed!"
     echo ""
     print_info "Next steps:"
