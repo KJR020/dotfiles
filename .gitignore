@@ -81,9 +81,16 @@
 
 # chezmoi
 !/home/
+!/home/.chezmoi.toml.tmpl
+!/home/.chezmoiignore
+!/home/dot_*
+!/home/*.zsh
 !/install/
+!/install/*.sh
 !/tests/
+!/tests/*.bats
 !task.md
 
-# chezmoi private files (秘密情報)
+# chezmoi private files (秘密情報) - テンプレートのみ管理
 /home/private_*
+!/home/private_*.tmpl

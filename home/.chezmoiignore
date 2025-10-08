@@ -1,0 +1,26 @@
+# chezmoiで管理しないファイル
+
+# 既存のconfigディレクトリ(旧構成)
+config/
+
+# スクリプト類(別途管理)
+scripts/
+install/
+
+# ビルドアーティファクト
+*.pyc
+*.pyo
+__pycache__/
+.DS_Store
+
+# その他
+.git/
+.github/
+Brewfile
+Makefile
+README.md
+task.md
+tests/
+
+# MCP関連(機密情報含む可能性)
+*.jsonnet

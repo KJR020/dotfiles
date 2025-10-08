@@ -1,0 +1,23 @@
+{{- $name := "KJR020" -}}
+{{- $email := "johnjiro1114@gmail.com" -}}
+{{- $ghq_root := "/Users/kjr020/work/" -}}
+
+{{- if (env "CHEZMOI_NAME") -}}
+{{-   $name = env "CHEZMOI_NAME" -}}
+{{- end -}}
+
+{{- if (env "CHEZMOI_EMAIL") -}}
+{{-   $email = env "CHEZMOI_EMAIL" -}}
+{{- end -}}
+
+{{- if (env "CHEZMOI_GHQ_ROOT") -}}
+{{-   $ghq_root = env "CHEZMOI_GHQ_ROOT" -}}
+{{- end -}}
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
+    ghq_root = {{ $ghq_root | quote }}
+    os = {{ .chezmoi.os | quote }}
+    arch = {{ .chezmoi.arch | quote }}
+    hostname = {{ .chezmoi.hostname | quote }}
