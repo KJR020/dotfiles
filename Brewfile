@@ -1,5 +1,4 @@
 tap "hashicorp/tap"
-tap "homebrew/bundle"
 tap "supabase/tap"
 brew "aqua"
 brew "python@3.12", link: false
