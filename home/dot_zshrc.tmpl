@@ -42,6 +42,24 @@ else
 fi
 
 # ----------------------------
+# プロンプトカスタマイズ（Oh My Zsh読み込み直後に設定）
+# ----------------------------
+# パスの省略表示を有効化
+setopt prompt_subst
+
+function prompt_pwd() {
+    local pwd="${PWD/#$HOME/~}"
+    if [[ "$pwd" == (#m)[/~] ]]; then
+        print "$MATCH"
+    else
+        print "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+    fi
+}
+
+# Gitブランチ情報を表示（Oh My Zshのgit_prompt_infoを使用）
+PROMPT='%F{cyan}$(prompt_pwd)%f %F{green}$(git_prompt_info)%f$ '
+
+# ----------------------------
 # パス設定
 # ----------------------------
 {{- if eq .os "darwin" }}
@@ -126,30 +144,6 @@ setopt correct
 
 # バックグラウンドジョブの状態変化を即時報告
 setopt notify
-
-# プロンプトカスタマイズ
-# パスの省略表示を有効化
-setopt prompt_subst
-function prompt_pwd() {
-    local pwd="${PWD/#$HOME/~}"
-    if [[ "$pwd" == (#m)[/~] ]]; then
-        print "$MATCH"
-    else
-        print "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
-    fi
-}
-
-# Git情報を表示する関数（Oh My Zshが利用できない場合の代替）
-function safe_git_prompt_info() {
-    if command -v git_prompt_info >/dev/null 2>&1; then
-        git_prompt_info
-    elif git rev-parse --git-dir >/dev/null 2>&1; then
-        local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-        echo "git:($branch)"
-    fi
-}
-
-PROMPT='%F{cyan}$(prompt_pwd)%f %F{green}$(safe_git_prompt_info)%f$ '
 
 # pnpm
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
