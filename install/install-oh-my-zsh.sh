@@ -49,6 +49,15 @@ install_zsh_plugins() {
     else
         print_success "zsh-syntax-highlighting already installed"
     fi
+
+    # zsh-completions
+    if [[ ! -d "$zsh_custom/plugins/zsh-completions" ]]; then
+        print_info "Installing zsh-completions"
+        git clone https://github.com/zsh-users/zsh-completions "$zsh_custom/plugins/zsh-completions"
+        print_success "zsh-completions installed"
+    else
+        print_success "zsh-completions already installed"
+    fi
 }
 
 # fzfのインストール

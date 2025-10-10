@@ -15,24 +15,7 @@ define print_warning
 	@echo "\033[0;33m⚠ $(1)\033[0m"
 endef
 
-.PHONY: init apply update diff test install install-homebrew install-oh-my-zsh update-brew cleanup-brew help
-
-.DEFAULT_GOAL := help
-
-help: ## ヘルプメッセージを表示
-	@echo "Available targets:"
-	@echo ""
-	@echo "  Chezmoi Commands:"
-	@grep -E '^(init|apply|update|diff|test):.*?## .*$$' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[36m%-20s\033[0m %s\n", $$1, $$2}'
-	@echo ""
-	@echo "  Installation Commands:"
-	@grep -E '^(install|install-homebrew|install-oh-my-zsh):.*?## .*$$' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[36m%-20s\033[0m %s\n", $$1, $$2}'
-	@echo ""
-	@echo "  Other Commands:"
-	@grep -E '^(update-brew|cleanup-brew):.*?## .*$$' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "    \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+.PHONY: init apply update diff test install install-homebrew install-oh-my-zsh update-brew cleanup-brew 
 
 # ----------------------------
 # Chezmoi Commands
