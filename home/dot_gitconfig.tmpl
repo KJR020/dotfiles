@@ -5,7 +5,34 @@
 	autocrlf = input
 	quotepath = false
 	excludesfile = ~/.gitignore_global
-[credential]
-	helper = osxkeychain
 [init]
 	defaultBranch = main
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	lg = log --oneline --graph --all
+	delete-merged-branches = !git branch --merged | grep -vE '\\*|main$|master$|develop$' | xargs -I % git branch -d %
+	current = rev-parse --abbrev-ref HEAD
+	s = status -s
+	amend = commit --amend
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk
+[ghq]
+	root = ~/work/
+[i18n]
+	commitencoding = utf-8
+	logoutputencoding = utf-8
+[pull]
+	rebase = false
+[fetch]
+	prune = true
