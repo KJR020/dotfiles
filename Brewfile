@@ -1,177 +1,282 @@
 tap "hashicorp/tap"
 tap "supabase/tap"
-brew "aqua"
-brew "python@3.12", link: false
-brew "awscli"
-brew "bash-completion"
-brew "docker-compose"
-brew "fzf"
-brew "gh"
-brew "ghq"
-brew "git"
-brew "go"
-brew "hugo"
-brew "jsonnet"
-brew "k6"
-brew "neovim"
-brew "node"
-brew "peco"
+
+# ========================================
+# ESSENTIAL TOOLS
+# ========================================
+
+# Version managers & Language runtimes
 brew "python@3.13"
-brew "pipx"
-brew "pnpm"
-brew "postgresql@13"
-brew "postgresql@14"
-brew "python@3.11"
-brew "tree"
-brew "uv"
-brew "vim"
+brew "node"
+brew "go"
 brew "volta"
-brew "zoxide"
+
+# Shell & Terminal
 brew "zsh"
 brew "zsh-autosuggestions"
-brew "hashicorp/tap/terraform"
+brew "bash-completion"
+
+# Version control & Repository management
+brew "git"
+brew "gh"
+brew "ghq"
+brew "aws-vault"
+brew "chezmoi"
+
+# CLI Tools
+brew "fzf"
+brew "peco"
+brew "tree"
+brew "zoxide"
+brew "direnv"
+
+# Utilities
+brew "uv"
+brew "poetry"
+brew "pnpm"
+brew "aqua"
+
+# Text editors
+brew "vim"
+
+# Package managers & Build tools
+brew "docker-compose"
+brew "bash-completion"
+
+# Infrastructure 
+brew "terraform", args: ["from-source"]
+
+# Testing
+brew "bats-core"
+
+# AWS
+brew "awscli"
+
+# Supabase CLI
 brew "supabase/tap/supabase"
-cask "background-music"
-cask "dbeaver-community"
+
+# PostgreSQL
+brew "postgresql@14"
+
 cask "docker"
-cask "figma"
-cask "gcloud-cli"
-cask "google-chrome"
-cask "iterm2"
-cask "raycast"
 cask "visual-studio-code"
+cask "google-chrome"
+cask "figma"
+cask "dbeaver-community"
+cask "gcloud-cli"
+cask "raycast"
 cask "warp"
-vscode "adpyke.vscode-sql-formatter"
-vscode "alefragnani.bookmarks"
-vscode "alexcvzz.vscode-sqlite"
-vscode "anthropic.claude-code"
-vscode "batisteo.vscode-django"
-vscode "bibhasdn.django-html"
-vscode "bierner.markdown-mermaid"
-vscode "bigonesystems.django"
-vscode "bradlc.vscode-tailwindcss"
-vscode "cameron.vscode-pytest"
-vscode "charliermarsh.ruff"
-vscode "christian-kohler.npm-intellisense"
-vscode "christian-kohler.path-intellisense"
-vscode "codesandbox-io.codesandbox-projects"
-vscode "dariofuzinato.vue-peek"
-vscode "darkriszty.markdown-table-prettify"
-vscode "dbaeumer.vscode-eslint"
-vscode "docker.docker"
-vscode "donjayamanne.githistory"
-vscode "donjayamanne.python-environment-manager"
-vscode "donjayamanne.python-extension-pack"
-vscode "dsznajder.es7-react-js-snippets"
-vscode "dunstontc.vscode-docker-syntax"
-vscode "dustypomerleau.rust-syntax"
-vscode "eamodio.gitlens"
-vscode "ecmel.vscode-html-css"
-vscode "editorconfig.editorconfig"
-vscode "eg2.vscode-npm-script"
-vscode "esbenp.prettier-vscode"
-vscode "formulahendry.auto-close-tag"
-vscode "formulahendry.auto-rename-tag"
-vscode "formulahendry.code-runner"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "github.vscode-github-actions"
-vscode "github.vscode-pull-request-github"
-vscode "glenn2223.live-sass"
+
+# ========================================
+# OPTIONAL
+# ========================================
+
+brew "go-task"
+brew "jsonnet"
+cask "rancher"
+
+# ========================================
+# VS CODE EXTENSIONS
+# ========================================
+
+# Language Support
 vscode "golang.go"
-vscode "gregorbiswanger.json2ts"
-vscode "hashicorp.terraform"
-vscode "hbenl.vscode-test-explorer"
-vscode "hediet.vscode-drawio"
-vscode "henriiik.docker-linter"
-vscode "hollowtree.vue-pack"
-vscode "hollowtree.vue-snippets"
-vscode "inferrinizzard.prettier-sql-vscode"
-vscode "jasonnutter.search-node-modules"
-vscode "jawandarajbir.react-vscode-extension-pack"
-vscode "kevinrose.vsc-python-indent"
-vscode "kisstkondoros.vscode-codemetrics"
-vscode "littlefoxteam.vscode-python-test-adapter"
-vscode "loiane.ts-extension-pack"
-vscode "marp-team.marp-vscode"
-vscode "matangover.mypy"
-vscode "mechatroner.rainbow-csv"
-vscode "mhutchie.git-graph"
-vscode "misterj.vue-volar-extention-pack"
-vscode "monosans.djlint"
-vscode "ms-azuretools.vscode-azureterraform"
-vscode "ms-azuretools.vscode-containers"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-ceintl.vscode-language-pack-ja"
-vscode "ms-dotnettools.dotnet-interactive-vscode"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
-vscode "ms-ossdata.vscode-pgsql"
-vscode "ms-python.black-formatter"
-vscode "ms-python.debugpy"
-vscode "ms-python.isort"
-vscode "ms-python.mypy-type-checker"
+vscode "rust-lang.rust-analyzer"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-python.black-formatter"
+vscode "ms-python.isort"
+vscode "ms-python.debugpy"
+vscode "ms-python.mypy-type-checker"
+vscode "svelte.svelte-vscode"
+vscode "vue.volar"
+vscode "prisma.prisma"
+
+# Web Development
+vscode "bradlc.vscode-tailwindcss"
+vscode "dbaeumer.vscode-eslint"
+vscode "esbenp.prettier-vscode"
+vscode "ecmel.vscode-html-css"
+vscode "formulahendry.auto-close-tag"
+vscode "formulahendry.auto-rename-tag"
+
+# Python/Django
+vscode "batisteo.vscode-django"
+vscode "bibhasdn.django-html"
+vscode "bigonesystems.django"
+vscode "thebarkman.vscode-djaneiro"
+vscode "stuartelimu.django-template-snippets"
+vscode "yossuli.django-html-completioner"
+
+# Git & Version Control
+vscode "eamodio.gitlens"
+vscode "donjayamanne.githistory"
+vscode "github.vscode-pull-request-github"
+vscode "github.vscode-github-actions"
+
+# Testing
+vscode "cameron.vscode-pytest"
+vscode "orta.vscode-jest"
+vscode "vitest.explorer"
+vscode "littlefoxteam.vscode-python-test-adapter"
+
+# Docker & Containers
+vscode "docker.docker"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vscode-remote.remote-ssh"
+vscode "ms-vscode-remote.remote-ssh-edit"
+vscode "ms-vscode-remote.vscode-remote-extensionpack"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-azuretools.vscode-containers"
+vscode "ms-azuretools.vscode-azureterraform"
+
+# Database
+vscode "ms-ossdata.vscode-pgsql"
+vscode "alexcvzz.vscode-sqlite"
+
+# Tools & Utilities
+vscode "hashicorp.terraform"
+vscode "charliermarsh.ruff"
+vscode "timonwong.shellcheck"
+vscode "adpyke.vscode-sql-formatter"
+vscode "inferrinizzard.prettier-sql-vscode"
+vscode "mechatroner.rainbow-csv"
+vscode "takumii.markdowntable"
+vscode "darkriszty.markdown-table-prettify"
+vscode "tamasfe.even-better-toml"
+vscode "bierner.markdown-mermaid"
+vscode "hediet.vscode-drawio"
+vscode "wholroyd.jinja"
+
+# Remote Development
+vscode "ms-vscode.remote-explorer"
+vscode "ms-vscode.remote-server"
+
+# Code Quality & Analysis
+vscode "kisstkondoros.vscode-codemetrics"
+vscode "matangover.mypy"
+vscode "monosans.djlint"
+
+# Formatting & Linting
+vscode "sibiraj-s.vscode-scss-formatter"
+vscode "glenn2223.live-sass"
+vscode "syler.sass-indented"
+vscode "richie5um2.vscode-sort-json"
+
+# Snippets & Shortcuts
+vscode "christian-kohler.npm-intellisense"
+vscode "christian-kohler.path-intellisense"
+vscode "eg2.vscode-npm-script"
+vscode "jasonnutter.search-node-modules"
+vscode "kevinrose.vsc-python-indent"
+vscode "njpwerner.autodocstring"
+vscode "formulahendry.code-runner"
+vscode "ritwickdey.liveserver"
+vscode "dsznajder.es7-react-js-snippets"
+vscode "xabikos.javascriptsnippets"
+vscode "xabikos.reactsnippets"
+vscode "jawandarajbir.react-vscode-extension-pack"
+vscode "sdras.vue-vscode-snippets"
+vscode "dariofuzinato.vue-peek"
+vscode "hollowtree.vue-pack"
+vscode "hollowtree.vue-snippets"
+vscode "misterj.vue-volar-extention-pack"
+vscode "stringham.move-ts"
+vscode "pmneo.tsimporter"
+
+# UI & Themes
+vscode "pkief.material-icon-theme"
+vscode "vscodevim.vim"
+
+# Documentation & Notes
+vscode "marp-team.marp-vscode"
+vscode "samghelms.jupyter-notebook-vscode"
+vscode "yzhang.markdown-all-in-one"
+vscode "yzane.markdown-pdf"
+
+# Markdown
+vscode "codesandbox-io.codesandbox-projects"
+
+# AI & Code Assistance
+vscode "github.copilot"
+vscode "github.copilot-chat"
+vscode "anthropic.claude-code"
+vscode "openai.chatgpt"
+
+# Debugging & Testing
+vscode "hbenl.vscode-test-explorer"
+vscode "ms-vscode.test-adapter-converter"
+vscode "vadimcn.vscode-lldb"
+
+# Language Packs & Localization
+vscode "ms-ceintl.vscode-language-pack-ja"
+
+# Development Environment
+vscode "editorconfig.editorconfig"
+vscode "usernamehw.errorlens"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "ms-vscode.makefile-tools"
+
+# Python Extensions
 vscode "ms-python.vscode-python-envs"
-vscode "ms-toolsai.datawrangler"
+vscode "donjayamanne.python-environment-manager"
+vscode "donjayamanne.python-extension-pack"
+
+# Data Science & Notebooks
 vscode "ms-toolsai.jupyter"
 vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
 vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode-remote.remote-ssh"
-vscode "ms-vscode-remote.remote-ssh-edit"
-vscode "ms-vscode-remote.vscode-remote-extensionpack"
+vscode "ms-toolsai.datawrangler"
+
+# .NET & C++
+vscode "ms-dotnettools.csharp"
+vscode "ms-dotnettools.dotnet-interactive-vscode"
+vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-vscode.cpptools"
-vscode "ms-vscode.makefile-tools"
+
+# PowerShell
 vscode "ms-vscode.powershell"
-vscode "ms-vscode.remote-explorer"
-vscode "ms-vscode.remote-server"
-vscode "ms-vscode.test-adapter-converter"
-vscode "ms-vscode.vscode-speech"
-vscode "ms-vscode.vscode-typescript-next"
-vscode "ms-vsliveshare.vsliveshare"
-vscode "mylesmurphy.prettify-ts"
-vscode "njpwerner.autodocstring"
-vscode "openai.chatgpt"
-vscode "orta.vscode-jest"
-vscode "pdconsec.vscode-print"
-vscode "pkief.material-icon-theme"
-vscode "pmneo.tsimporter"
-vscode "prisma.prisma"
+
+# Other Languages
+vscode "dunstontc.vscode-docker-syntax"
+vscode "dustypomerleau.rust-syntax"
 vscode "reditorsupport.r"
 vscode "reditorsupport.r-syntax"
-vscode "richie5um2.vscode-sort-json"
-vscode "ritwickdey.liveserver"
-vscode "rooveterinaryinc.roo-cline"
-vscode "rust-lang.rust-analyzer"
-vscode "samghelms.jupyter-notebook-vscode"
-vscode "sdras.vue-vscode-snippets"
-vscode "sibiraj-s.vscode-scss-formatter"
-vscode "sidthesloth.html5-boilerplate"
-vscode "streetsidesoftware.code-spell-checker"
-vscode "stringham.move-ts"
-vscode "stuartelimu.django-template-snippets"
-vscode "svelte.svelte-vscode"
-vscode "swellaby.rust-pack"
-vscode "syler.sass-indented"
-vscode "taizod1024.ac-ts-extension"
-vscode "takumii.markdowntable"
-vscode "tamasfe.even-better-toml"
-vscode "thebarkman.vscode-djaneiro"
-vscode "timonwong.shellcheck"
-vscode "usernamehw.errorlens"
-vscode "vadimcn.vscode-lldb"
-vscode "visualstudioexptteam.intellicode-api-usage-examples"
-vscode "visualstudioexptteam.vscodeintellicode"
-vscode "vitest.explorer"
-vscode "vscodevim.vim"
-vscode "vue.volar"
-vscode "wholroyd.jinja"
-vscode "xabikos.javascriptsnippets"
-vscode "xabikos.reactsnippets"
-vscode "yoavbls.pretty-ts-errors"
-vscode "yossuli.django-html-completioner"
 vscode "yseop.vscode-yseopml"
-vscode "yzhang.markdown-all-in-one"
+
+# LiveShare & Collaboration
+vscode "ms-vsliveshare.vsliveshare"
+
+# Code Tours & Navigation
+vscode "vsls-contrib.codetour"
+
+# Error Display
+vscode "yoavbls.pretty-ts-errors"
+vscode "mylesmurphy.prettify-ts"
+
+# Print & PDF
+vscode "pdconsec.vscode-print"
+
+# Misc Extensions
+vscode "henriiik.docker-linter"
+vscode "dunstontc.vscode-docker-syntax"
+vscode "rooveterinaryinc.roo-cline"
+vscode "sidthesloth.html5-boilerplate"
+vscode "alefragnani.bookmarks"
+vscode "mhutchie.git-graph"
+vscode "gregorbiswanger.json2ts"
+vscode "swellaby.rust-pack"
+vscode "visualstudioexptteam.vscodeintellicode"
+vscode "visualstudioexptteam.intellicode-api-usage-examples"
+vscode "ms-vscode.vscode-typescript-next"
+vscode "ms-vscode.vscode-speech"
+vscode "loiane.ts-extension-pack"
+
+# ========================================
+# OPTIONAL - GO TOOLS
+# ========================================
+
+go "golang.org/x/tools/gopls"
+go "honnef.co/go/tools/cmd/staticcheck"
