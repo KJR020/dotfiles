@@ -205,6 +205,11 @@ rm -rf ~/.zcompdump*
 make install-oh-my-zsh
 ```
 
+## ドキュメント
+
+- 詳細なドキュメントは以下を参照
+  - [chezmoi運用ガイド](docs/chezmoi.md)
+
 ## ライセンス
 
 MIT
