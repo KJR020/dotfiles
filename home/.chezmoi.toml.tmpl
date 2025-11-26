@@ -1,6 +1,7 @@
 {{- $name := "KJR020" -}}
 {{- $email := "johnjiro1114@gmail.com" -}}
 {{- $ghq_root := "/Users/kjr020/work/" -}}
+{{- $container := "docker" -}}
 
 {{- if (env "CHEZMOI_NAME") -}}
 {{-   $name = env "CHEZMOI_NAME" -}}
@@ -14,10 +15,17 @@
 {{-   $ghq_root = env "CHEZMOI_GHQ_ROOT" -}}
 {{- end -}}
 
+{{- if (env "CHEZMOI_CONTAINER") -}}
+{{-   $container = env "CHEZMOI_CONTAINER" -}}
+{{- else -}}
+{{-   $container = promptString "Container runtime (docker/rancher)" "docker" -}}
+{{- end -}}
+
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
     ghq_root = {{ $ghq_root | quote }}
+    container = {{ $container | quote }}
     os = {{ .chezmoi.os | quote }}
     arch = {{ .chezmoi.arch | quote }}
     hostname = {{ .chezmoi.hostname | quote }}

@@ -11,7 +11,9 @@ KJR020 dotfiles - chezmoi管理
   - エイリアス
   - 履歴設定
   - 補完設定
-- **Bash設定** (`.bashrc`, `.bash_profile`)
+  - Terraform補完
+  - Homebrew PATH設定
+  - コンテナランタイム別PATH管理（Docker Desktop / Rancher Desktop）
 
 ### エディタ・開発ツール
 - **Vim設定** (`.vimrc`)
