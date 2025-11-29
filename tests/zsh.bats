@@ -1,27 +1,27 @@
 #!/usr/bin/env bats
 
-# Zsh設定のテスト
+# Zsh configuration tests
 
-@test "~/.zshrc が存在する" {
+@test "Given zsh is configured, then ~/.zshrc exists" {
   [ -f "$HOME/.zshrc" ]
 }
 
-@test "~/.zprofile が存在する" {
+@test "Given zsh is configured, then ~/.zprofile exists" {
   [ -f "$HOME/.zprofile" ]
 }
 
-@test ".zshrc に Oh My Zsh の設定が含まれている" {
+@test "Given .zshrc exists, then Oh My Zsh is configured" {
   grep -q 'ZSH=' "$HOME/.zshrc"
 }
 
-@test ".zshrc にパス設定が含まれている" {
+@test "Given .zshrc exists, then PATH is configured" {
   grep -q 'PATH=' "$HOME/.zshrc"
 }
 
-@test ".zshrc にfzfの設定が含まれている" {
+@test "Given .zshrc exists, then fzf is configured" {
   grep -q 'fzf' "$HOME/.zshrc"
 }
 
-@test ".zshrc にzoxideの設定が含まれている" {
+@test "Given .zshrc exists, then zoxide is configured" {
   grep -q 'zoxide' "$HOME/.zshrc"
 }

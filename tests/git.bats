@@ -1,31 +1,31 @@
 #!/usr/bin/env bats
 
-# Git設定のテスト
+# Git configuration tests
 
-@test "~/.gitconfig が存在する" {
+@test "Given git is configured, then ~/.gitconfig exists" {
   [ -f "$HOME/.gitconfig" ]
 }
 
-@test "~/.gitignore_global が存在する" {
+@test "Given git is configured, then ~/.gitignore_global exists" {
   [ -f "$HOME/.gitignore_global" ]
 }
 
-@test "~/.gitmessage が存在する" {
+@test "Given git is configured, then ~/.gitmessage exists" {
   [ -f "$HOME/.gitmessage" ]
 }
 
-@test ".gitconfig にユーザー名が設定されている" {
+@test "Given .gitconfig exists, then user name is configured" {
   grep -q "name = " "$HOME/.gitconfig"
 }
 
-@test ".gitconfig にメールアドレスが設定されている" {
+@test "Given .gitconfig exists, then email is configured" {
   grep -q "email = " "$HOME/.gitconfig"
 }
 
-@test ".gitconfig に excludesfile が設定されている" {
+@test "Given .gitconfig exists, then excludesfile is configured" {
   grep -q "excludesfile = ~/.gitignore_global" "$HOME/.gitconfig"
 }
 
-@test ".gitconfig に ghq root が設定されている" {
+@test "Given .gitconfig exists, then ghq root is configured" {
   grep -q "root = " "$HOME/.gitconfig"
 }
