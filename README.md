@@ -212,10 +212,6 @@ make install-oh-my-zsh
 - 詳細なドキュメントは以下を参照
   - [chezmoi運用ガイド](docs/chezmoi.md)
 
-## ライセンス
-
-MIT
-
 ## 参考
 
 - [chezmoi公式ドキュメント](https://www.chezmoi.io/)
