@@ -57,16 +57,7 @@ function git_prompt_info() {
 # ----------------------------
 # プロンプト設定
 # ----------------------------
-function prompt_pwd() {
-  local pwd="${PWD/#$HOME/~}"
-  if [[ "$pwd" == (#m)[/~] ]]; then
-    print "$MATCH"
-  else
-    print "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
-  fi
-}
-
-PROMPT='%F{cyan}$(prompt_pwd)%f $(git_prompt_info)$ '
+PROMPT='%F{cyan}%~%f $(git_prompt_info)$ '
 
 # ----------------------------
 # プラグイン (Homebrew)
