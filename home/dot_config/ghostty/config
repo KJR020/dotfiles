@@ -1,0 +1,8 @@
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+font-family = "JetBrains Mono Nerd Font"
+font-size = 13
+adjust-cell-height = -4
+background-opacity = 0.90
+
+statusline = enabled
+
