@@ -35,7 +35,6 @@ setopt EXTENDED_HISTORY
 # ----------------------------
 setopt auto_cd
 setopt no_beep
-setopt correct
 setopt notify
 setopt prompt_subst
 

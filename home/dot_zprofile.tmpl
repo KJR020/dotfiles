@@ -4,13 +4,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
 
-# PostgreSQL PATH
-export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
-
-# Terraform completion
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-
 # Console Ninja
 PATH=~/.console-ninja/.bin:$PATH
 
