@@ -7,62 +7,19 @@ export VISUAL='nvim'
 export PAGER='less'
 
 # ----------------------------
-# Oh My Zsh Configuration
-# ----------------------------
-export ZSH="$HOME/.oh-my-zsh"
-
-# テーマ設定
-ZSH_THEME="robbyrussell"
-
-# Oh My Zsh設定
-DISABLE_AUTO_UPDATE="true"
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="yyyy-mm-dd"
-
-# プラグイン
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  docker
-  docker-compose
-  npm
-  python
-  pip
-  golang
-)
-
-# Oh My Zshの読み込み（存在確認付き）
-if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
-  source $ZSH/oh-my-zsh.sh
-else
-  echo "Warning: Oh My Zsh not found. Please install it first:"
-  echo "sh -c \"\$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""
-fi
-
-# ----------------------------
-# プロンプトカスタマイズ
-# ----------------------------
-setopt prompt_subst
-
-function prompt_pwd() {
-    local pwd="${PWD/#$HOME/~}"
-    if [[ "$pwd" == (#m)[/~] ]]; then
-        print "$MATCH"
-    else
-        print "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
-    fi
-}
-
-PROMPT='%F{cyan}$(prompt_pwd)%f %F{green}$(git_prompt_info)%f$ '
-
-# ----------------------------
 # 補完設定
 # ----------------------------
+autoload -Uz compinit
+compinit
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 setopt list_packed
+
+# zsh-completions (Homebrew)
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
+fi
 
 # ----------------------------
 # 履歴設定
@@ -80,13 +37,47 @@ setopt auto_cd
 setopt no_beep
 setopt correct
 setopt notify
+setopt prompt_subst
+
+# ----------------------------
+# Git prompt
+# ----------------------------
+function git_prompt_info() {
+  local branch
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null) || return
+
+  local status_color="%F{green}"
+  if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
+    status_color="%F{yellow}"
+  fi
+
+  echo "${status_color}(${branch})%f"
+}
+
+# ----------------------------
+# プロンプト設定
+# ----------------------------
+function prompt_pwd() {
+  local pwd="${PWD/#$HOME/~}"
+  if [[ "$pwd" == (#m)[/~] ]]; then
+    print "$MATCH"
+  else
+    print "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+  fi
+}
+
+PROMPT='%F{cyan}$(prompt_pwd)%f $(git_prompt_info)$ '
+
+# ----------------------------
+# プラグイン (Homebrew)
+# ----------------------------
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ----------------------------
 # ツール設定
 # ----------------------------
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
-# zoxide
 eval "$(zoxide init zsh)"
