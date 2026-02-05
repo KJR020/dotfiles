@@ -77,3 +77,8 @@ if [[ -x "$HOME/.claude/local/claude" ]]; then
   alias claude="$HOME/.claude/local/claude"
 fi
 
+# Claude Code with English Coach mode
+claude-en() {
+  claude --append-system-prompt "$(cat ~/.claude/prompts/en-coach.txt)" "$@"
+}
+
