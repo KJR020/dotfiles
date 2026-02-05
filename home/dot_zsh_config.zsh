@@ -71,3 +71,9 @@ source <(fzf --zsh)
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 eval "$(zoxide init zsh)"
+
+# Claude Code local launcher
+if [[ -x "$HOME/.claude/local/claude" ]]; then
+  alias claude="$HOME/.claude/local/claude"
+fi
+
