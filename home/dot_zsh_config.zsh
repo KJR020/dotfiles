@@ -72,13 +72,11 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
 eval "$(zoxide init zsh)"
 
-# Claude Code local launcher
-if [[ -x "$HOME/.claude/local/claude" ]]; then
-  alias claude="$HOME/.claude/local/claude"
-fi
-
 # Claude Code with English Coach mode
 claude-en() {
   claude --append-system-prompt "$(cat ~/.claude/prompts/en-coach.txt)" "$@"
 }
+
+# Claude Code Agent Teams (tmux split-pane mode)
+alias cc-team='claude --teammate-mode tmux'
 
