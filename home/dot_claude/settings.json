@@ -1,0 +1,15 @@
+{
+  "env": {
+    "ENABLE_TOOL_SEARCH": "true",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(python3:*)"
+    ]
+  },
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true
+  }
+}
