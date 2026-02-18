@@ -5,8 +5,13 @@
   },
   "permissions": {
     "allow": [
-      "Bash(grep:*)",
-      "Bash(python3:*)"
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "TodoWrite",
+      "Bash(grep:*)"
     ]
   },
   "enabledPlugins": {
