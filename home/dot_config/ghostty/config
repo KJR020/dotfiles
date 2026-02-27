@@ -1,5 +1,11 @@
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+
 font-family = "JetBrains Mono Nerd Font"
+# 日本語フォールバック（等幅）
+font-family = "UDEV Gothic 35JPDOC"
+font-family = "HackGen"
+font-family = "Noto Sans Mono CJK JP"
+
 font-size = 13
 adjust-cell-height = -4
 
