@@ -23,10 +23,10 @@ KJR020 dotfiles - chezmoi管理
   - OS別の認証情報ヘルパー設定
 
 ### パッケージ管理
-- **Homebrew** (`Brewfile`)
-  - CLIツール
-  - GUIアプリケーション（Cask）
-  - VSCode拡張機能
+- **devtools** (`devtools/`)
+  - Homebrew定義（`devtools/brew/*.Brewfile`）
+  - Node.js製CLI定義（`devtools/volta/packages.txt`）
+  - Python製CLI定義（`devtools/uv/tools.txt`）
 
 ### 秘密情報
 - **環境変数** (`.env`)
@@ -40,6 +40,10 @@ KJR020 dotfiles - chezmoi管理
 
 ```
 dotfiles/
+├── devtools/               # 開発ツールの定義（SoT）
+│   ├── brew/              # Homebrew Bundle定義
+│   ├── volta/             # Volta管理CLI定義
+│   └── uv/                # uv tool管理CLI定義
 ├── home/                    # chezmoiで管理するdotfiles
 │   ├── .chezmoi.toml.tmpl  # chezmoi設定(環境変数)
 │   ├── .chezmoiignore      # 無視するファイル
@@ -54,8 +58,10 @@ dotfiles/
 ├── tests/                   # Batsテストスクリプト
 │   ├── git.bats
 │   └── zsh.bats
+├── docs/                    # 運用ドキュメント
+│   ├── chezmoi.md
+│   └── adr/
 ├── config/                  # レガシー設定(互換性のため残存)
-├── Brewfile                 # Homebrewパッケージリスト
 ├── Makefile                 # タスクランナー
 ├── task.md                  # タスク管理
 └── README.md                # このファイル
@@ -106,8 +112,10 @@ make diff       # chezmoiで差分を確認
 #### パッケージ管理
 
 ```bash
-make update-brew   # Brewfileを現在の環境に合わせて更新
-make cleanup-brew  # Homebrewのクリーンアップ
+make brew-sync BREW_PROFILE=profile1  # profile1のBrewfileを適用
+make brew-dump BREW_PROFILE=profile1  # 現在のbrew状態を定義へ反映
+make volta-sync                        # Volta定義を同期
+make uv-sync                           # uv tool定義を同期
 ```
 
 #### テスト
@@ -169,7 +177,21 @@ make apply
 新しいパッケージを追加した後:
 
 ```bash
-make update-brew
+make brew-dump BREW_PROFILE=profile1
+```
+
+#### 開発ツール管理ポリシー
+
+- Homebrew: システムパッケージとGUIアプリを管理
+- Volta: Node.js製グローバルCLIを管理（例: `agent-browser`）
+- uv tool: Python製グローバルCLIを管理
+- 同一CLIを複数のツールマネージャで重複管理しない
+- 管理ファイルを唯一の定義（SoT）として運用する
+
+詳細な背景と判断理由はADRを参照:
+
+```bash
+docs/adr/0001-devtools-toolchain-split.md
 ```
 
 ### 診断とメンテナンス
@@ -211,6 +233,7 @@ make install-oh-my-zsh
 
 - 詳細なドキュメントは以下を参照
   - [chezmoi運用ガイド](docs/chezmoi.md)
+  - [ADR-0001: devtoolsでのツール管理分離](docs/adr/0001-devtools-toolchain-split.md)
 
 ## 参考
 
