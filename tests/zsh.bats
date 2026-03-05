@@ -10,18 +10,31 @@
   [ -f "$HOME/.zprofile" ]
 }
 
-@test "Given .zshrc exists, then Oh My Zsh is configured" {
-  grep -q 'ZSH=' "$HOME/.zshrc"
+@test "Given zsh is configured, then ~/.zsh_config.zsh exists" {
+  [ -f "$HOME/.zsh_config.zsh" ]
 }
 
 @test "Given .zshrc exists, then PATH is configured" {
   grep -q 'PATH=' "$HOME/.zshrc"
 }
 
-@test "Given .zshrc exists, then fzf is configured" {
-  grep -q 'fzf' "$HOME/.zshrc"
+@test "Given .zshrc exists, then zsh_config is sourced" {
+  grep -q 'source ~/.zsh_config.zsh' "$HOME/.zshrc"
 }
 
-@test "Given .zshrc exists, then zoxide is configured" {
-  grep -q 'zoxide' "$HOME/.zshrc"
+@test "Given .zsh_config.zsh exists, then Oh My Zsh is not referenced" {
+  ! grep -Eq 'oh-my-zsh|^export ZSH=' "$HOME/.zsh_config.zsh"
+}
+
+@test "Given .zsh_config.zsh exists, then zsh plugins are configured via Homebrew" {
+  grep -q 'zsh-autosuggestions' "$HOME/.zsh_config.zsh"
+  grep -q 'zsh-syntax-highlighting' "$HOME/.zsh_config.zsh"
+}
+
+@test "Given .zsh_config.zsh exists, then fzf is configured" {
+  grep -q 'fzf' "$HOME/.zsh_config.zsh"
+}
+
+@test "Given .zsh_config.zsh exists, then zoxide is configured" {
+  grep -q 'zoxide' "$HOME/.zsh_config.zsh"
 }

@@ -6,8 +6,7 @@ KJR020 dotfiles - chezmoi管理
 
 ### シェル環境
 - **Zsh設定** (`.zshrc`, `.zprofile`)
-  - Oh My Zshの設定
-  - プラグイン設定（zsh-autosuggestions、zsh-syntax-highlighting）
+  - プラグイン設定（Homebrew配布の `zsh-autosuggestions` / `zsh-syntax-highlighting`）
   - エイリアス
   - 履歴設定
   - 補完設定
@@ -51,19 +50,13 @@ dotfiles/
 │   ├── dot_zshrc.tmpl      # テンプレート化された.zshrc
 │   ├── dot_vimrc           # Vim設定
 │   └── private_dot_env.tmpl # 秘密情報(.env)
-├── install/                 # インストールスクリプト
-│   ├── install-all.sh
-│   ├── install-homebrew.sh
-│   └── install-oh-my-zsh.sh
 ├── tests/                   # Batsテストスクリプト
 │   ├── git.bats
 │   └── zsh.bats
 ├── docs/                    # 運用ドキュメント
 │   ├── chezmoi.md
 │   └── adr/
-├── config/                  # レガシー設定(互換性のため残存)
 ├── Makefile                 # タスクランナー
-├── task.md                  # タスク管理
 └── README.md                # このファイル
 ```
 
@@ -76,15 +69,15 @@ dotfiles/
 git clone https://github.com/KJR020/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
-# 2. 全てをインストール (Homebrew + Oh My Zsh + dotfiles適用)
+# 2. chezmoiを初期化してdotfilesを適用
 make install
 ```
 
 ### 既存環境からの移行
 
 ```bash
-# 1. chezmoiとBatsをインストール
-make install-homebrew
+# 1. 必要ツールをインストール
+brew install chezmoi bats-core
 
 # 2. chezmoiを初期化
 make init
@@ -219,14 +212,11 @@ brew doctor
 brew cleanup
 ```
 
-#### Oh My Zsh
+#### Zsh
 
 ```bash
 # キャッシュのクリア
 rm -rf ~/.zcompdump*
-
-# プラグインの再インストール
-make install-oh-my-zsh
 ```
 
 ## ドキュメント

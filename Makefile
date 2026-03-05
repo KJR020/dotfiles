@@ -1,5 +1,5 @@
 # 変数設定
-DOTFILES_DIR := $(HOME)/dotfiles
+DOTFILES_DIR := $(CURDIR)
 HOME_DIR := $(DOTFILES_DIR)/home
 DEVTOOLS_DIR := $(CURDIR)/devtools
 BREW_PROFILE ?= profile1
@@ -7,7 +7,12 @@ BREWFILE := $(DEVTOOLS_DIR)/brew/$(BREW_PROFILE).Brewfile
 VOLTA_PACKAGES_FILE := $(DEVTOOLS_DIR)/volta/packages.txt
 UV_TOOLS_FILE := $(DEVTOOLS_DIR)/uv/tools.txt
 
-.PHONY: init apply update diff test install install-homebrew install-oh-my-zsh \
+# 非ログインシェルでもHomebrewコマンドを解決できるようにする（macOS）
+ifeq ($(shell uname -s),Darwin)
+PATH := /opt/homebrew/bin:/opt/homebrew/sbin:$(PATH)
+endif
+
+.PHONY: init apply update diff test install help \
 	update-brew check-brew cleanup-brew \
 	brew-sync brew-dump brew-check brew-cleanup \
 	volta-sync uv-sync
@@ -35,16 +40,12 @@ test: ## Batsでテストを実行
 # Installation Commands
 # ----------------------------
 
-install: ## 全てのインストールを実行 (Homebrew + Oh My Zsh + chezmoi apply)
-	@bash $(DOTFILES_DIR)/install/install-all.sh
+install: ## 初期セットアップ（chezmoi init/apply）
 	@$(MAKE) init
 	@$(MAKE) apply
 
-install-homebrew: ## Homebrewとパッケージをインストール
-	@bash $(DOTFILES_DIR)/install/install-homebrew.sh
-
-install-oh-my-zsh: ## Oh My Zshとプラグインをインストール
-	@bash $(DOTFILES_DIR)/install/install-oh-my-zsh.sh
+help: ## ターゲット一覧を表示
+	@awk 'BEGIN {FS = ":.*## "; printf "\nUsage:\n  make <target>\n\nTargets:\n"} /^[a-zA-Z0-9_-]+:.*## / {printf "  %-16s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 # ----------------------------
 # Other Commands
