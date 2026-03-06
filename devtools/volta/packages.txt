@@ -1,4 +1,5 @@
 # Voltaで管理するNode.js CLI一覧
 # 形式: <package>@<version>
 # 例: @anthropic-ai/claude-code@latest
+@dotenvx/dotenvx@latest
 agent-browser@latest
