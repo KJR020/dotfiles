@@ -11,11 +11,49 @@
       "WebSearch",
       "WebFetch",
       "TodoWrite",
-      "Bash(grep:*)"
-    ]
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(which:*)",
+      "Bash(command:*)",
+      "Bash(type:*)",
+      "Bash(echo:*)",
+      "Bash(pwd)",
+      "Bash(date:*)",
+      "Bash(env:*)",
+      "Bash(printenv:*)",
+      "Bash(diff:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(cut:*)",
+      "Bash(awk:*)",
+      "Bash(sed:*)",
+      "Bash(tr:*)",
+      "Bash(jq:*)",
+      "Bash(file:*)",
+      "Bash(stat:*)",
+      "Bash(du:*)",
+      "Bash(tree:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git tag:*)",
+      "Bash(git remote:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git --no-pager:*)"
+    ],
+    "deny": []
   },
   "enabledPlugins": {
     "claude-mem@thedotmack": true,
     "rev@bp-plugins": true
-  }
+  },
+  "effortLevel": "high"
 }
