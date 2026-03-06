@@ -1,6 +1,6 @@
 {{- $name := "KJR020" -}}
 {{- $email := "johnjiro1114@gmail.com" -}}
-{{- $ghq_root := "/Users/kjr020/work/" -}}
+{{- $ghq_root := (printf "%s/work" .chezmoi.homeDir) -}}
 {{- $container := "docker" -}}
 
 {{- if (env "CHEZMOI_NAME") -}}

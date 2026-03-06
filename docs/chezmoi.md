@@ -8,7 +8,7 @@
 
 | コマンド                  | 説明                      |
 |-----------------------|---------------------------|
-| `chezmoi init KJR020` | 初期化（最初の1回のみ）        |
+| `chezmoi init --source=$HOME/dotfiles/home` | 初期化（最初の1回のみ）        |
 | `chezmoi apply`       | dotfilesをホームディレクトリに適用   |
 | `chezmoi update`      | リポジトリの更新と適用を同時に実行 |
 
@@ -69,7 +69,7 @@ git commit -m "🔧 設定を更新"
 ```toml
 {{ .name }}         # KJR020
 {{ .email }}        # johnjiro1114@gmail.com
-{{ .ghq_root }}     # /Users/kjr020/work/
+{{ .ghq_root }}     # $HOME/work（既定値）
 {{ .chezmoi.os }}   # darwin / linux
 ```
 

@@ -59,18 +59,31 @@ function git_prompt_info() {
 PROMPT='%F{cyan}%~%f $(git_prompt_info)$ '
 
 # ----------------------------
-# プラグイン (Homebrew)
+# プラグイン
 # ----------------------------
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if command -v brew >/dev/null 2>&1; then
+  BREW_PREFIX="$(brew --prefix)"
+
+  if [ -f "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+    source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  fi
+
+  if [ -f "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  fi
+fi
 
 # ----------------------------
 # ツール設定
 # ----------------------------
-source <(fzf --zsh)
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
-eval "$(zoxide init zsh)"
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
 
 # Claude Code with English Coach mode
 claude-en() {
@@ -79,4 +92,3 @@ claude-en() {
 
 # Claude Code Agent Teams (tmux split-pane mode)
 alias cc-team='claude --teammate-mode tmux'
-

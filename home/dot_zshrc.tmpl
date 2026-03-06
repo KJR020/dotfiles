@@ -14,6 +14,7 @@ export PATH="/opt/homebrew/sbin:$PATH"
 {{- else if eq .os "linux" }}
 # Homebrew (Linux)
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
 {{- end }}
 
 # Go
@@ -29,7 +30,11 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # pnpm
+{{- if eq .os "darwin" }}
 export PNPM_HOME="{{ .chezmoi.homeDir }}/Library/pnpm"
+{{- else if eq .os "linux" }}
+export PNPM_HOME="{{ .chezmoi.homeDir }}/.local/share/pnpm"
+{{- end }}
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -45,7 +50,13 @@ export PATH="{{ .chezmoi.homeDir }}/.codeium/windsurf/bin:$PATH"
 
 # Terraform
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+if command -v terraform >/dev/null 2>&1; then
+  if command -v brew >/dev/null 2>&1; then
+    complete -o nospace -C "$(brew --prefix)/bin/terraform" terraform
+  elif command -v /home/linuxbrew/.linuxbrew/bin/terraform >/dev/null 2>&1; then
+    complete -o nospace -C /home/linuxbrew/.linuxbrew/bin/terraform terraform
+  fi
+fi
 
 # Console Ninja
 PATH=~/.console-ninja/.bin:$PATH

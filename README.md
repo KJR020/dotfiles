@@ -89,6 +89,12 @@ make diff
 make apply
 ```
 
+### Ubuntuで使う場合
+
+- Ubuntuでも `chezmoi` テンプレートは利用可能です（`home/` 配下はOS分岐対応）。
+- パッケージ同期コマンド（`make brew-sync` など）は Homebrew/Linuxbrew の導入を前提にしています。
+- Git credential helper はOSごとに自動分岐されます（macOS: `osxkeychain` / Linux: `cache --timeout=36000`）。
+
 ## 使い方
 
 ### 基本コマンド
