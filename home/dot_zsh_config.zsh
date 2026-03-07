@@ -85,6 +85,16 @@ if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
 
+# pet (snippet manager)
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^s' pet-select
+
 # Claude Code with English Coach mode
 claude-en() {
   claude --append-system-prompt "$(cat ~/.claude/prompts/en-coach.txt)" "$@"
