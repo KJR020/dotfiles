@@ -17,3 +17,12 @@ alias du='du -h'
 
 # ghq + fzf
 alias gr='cd $(ghq root)/$(ghq list | fzf)'
+
+# eza (ls の代替)
+alias ls='eza'
+alias ll='eza -la --git --icons'
+alias lt='eza --tree --level=2'
+
+# lazygit
+alias lg='lazygit'
+
