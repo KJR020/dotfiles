@@ -12,3 +12,6 @@ adjust-cell-height = -4
 background-opacity = 0.95
 unfocused-split-opacity = 0.7
 
+# Shift+Enter で改行（Claude Code 等で使用）
+keybind = shift+enter=text:\x1b[13;2u
+

@@ -22,4 +22,7 @@ alias gr='cd $(ghq root)/$(ghq list | fzf)'
 alias lg='lazygit'
 
 # Claude Code
-alias cc='claude'
+alias cc='claude --dangerously-skip-permissions'
+
+# Codex CLI
+alias cx='codex --full-auto'
