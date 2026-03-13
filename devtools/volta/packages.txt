@@ -3,3 +3,4 @@
 # 例: @anthropic-ai/claude-code@latest
 @dotenvx/dotenvx@latest
 agent-browser@latest
+notebooklm-mcp@latest

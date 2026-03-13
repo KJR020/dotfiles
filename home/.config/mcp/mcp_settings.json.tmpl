@@ -77,6 +77,27 @@
     "youtube": {
       "args": ["-y", "@anaisbetts/mcp-youtube"],
       "command": "npx"
+    },
+    "notebooklm": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "{{ .chezmoi.homeDir }}/.local/share/notebooklm-mcp",
+        "python",
+        "main.py"
+      ],
+      "env": {
+        "HEADLESS": "true",
+        "NOTEBOOKLM_PROFILE": "full"
+      }
+    },
+    "notebooklm-query": {
+      "command": "npx",
+      "args": ["notebooklm-mcp@latest"],
+      "env": {
+        "NOTEBOOKLM_PROFILE": "full"
+      }
     }
   }
 }

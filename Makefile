@@ -101,6 +101,17 @@ dmg-sync: ## DMGアプリをインストール（未インストールのみ）
 		fi; \
 	done
 
+notebooklm-sync: ## Python版 notebooklm-mcp をクローン＆セットアップ
+	@NLMCP_DIR="$(HOME)/.local/share/notebooklm-mcp"; \
+	if [ ! -d "$$NLMCP_DIR" ]; then \
+		echo "Cloning notebooklm-mcp..."; \
+		git clone https://github.com/wangjing0/notebooklm-mcp "$$NLMCP_DIR"; \
+	else \
+		echo "Updating notebooklm-mcp..."; \
+		cd "$$NLMCP_DIR" && git pull; \
+	fi; \
+	cd "$$NLMCP_DIR" && uv sync && uv run playwright install chromium
+
 update-brew: brew-dump ## 互換: 現在インストールされているパッケージでBrewfileを更新
 check-brew: brew-check ## 互換: brewfileとインストール済みパッケージの整合性を確認
 cleanup-brew: brew-cleanup ## 互換: Homebrewのクリーンアップ
