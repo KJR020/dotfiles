@@ -20,3 +20,6 @@ alias gr='cd $(ghq root)/$(ghq list | fzf)'
 
 # lazygit
 alias lg='lazygit'
+
+# Claude Code
+alias cc='claude'
