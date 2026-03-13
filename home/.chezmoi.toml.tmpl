@@ -29,3 +29,10 @@
     os = {{ .chezmoi.os | quote }}
     arch = {{ .chezmoi.arch | quote }}
     hostname = {{ .chezmoi.hostname | quote }}
+
+[edit]
+    apply = true
+
+[git]
+    autoCommit = true
+    autoPush = true
