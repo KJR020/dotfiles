@@ -102,5 +102,19 @@
     "claude-mem@thedotmack": true,
     "rev@bp-plugins": true
   },
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "hooks": {
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/cleanup-mcp.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
 }
