@@ -6,6 +6,7 @@ BREW_PROFILE ?= profile1
 BREWFILE := $(DEVTOOLS_DIR)/brew/$(BREW_PROFILE).Brewfile
 VOLTA_PACKAGES_FILE := $(DEVTOOLS_DIR)/volta/packages.txt
 UV_TOOLS_FILE := $(DEVTOOLS_DIR)/uv/tools.txt
+DMG_PACKAGES_FILE := $(DEVTOOLS_DIR)/dmg/packages.txt
 
 # 非ログインシェルでもHomebrewコマンドを解決できるようにする（macOS）
 ifeq ($(shell uname -s),Darwin)
@@ -15,7 +16,7 @@ endif
 .PHONY: init apply update diff test install help \
 	update-brew check-brew cleanup-brew \
 	brew-sync brew-dump brew-check brew-cleanup \
-	volta-sync uv-sync
+	volta-sync uv-sync dmg-sync
 
 # ----------------------------
 # Chezmoi Commands
@@ -79,6 +80,25 @@ uv-sync: ## devtools/uv/tools.txt のCLIをuv toolで同期
 	@grep -Ev '^\s*(#|$$)' "$(UV_TOOLS_FILE)" | while read -r tool; do \
 		echo "uv tool install $$tool"; \
 		uv tool install "$$tool"; \
+	done
+
+dmg-sync: ## DMGアプリをインストール（未インストールのみ）
+	@[ -f "$(DMG_PACKAGES_FILE)" ] || (echo "DMG packages file not found: $(DMG_PACKAGES_FILE)" && exit 1)
+	@grep -Ev '^\s*(#|$$)' "$(DMG_PACKAGES_FILE)" | while IFS='|' read -r name app_dir arm64_url x64_url; do \
+		if [ -d "/Applications/$$app_dir" ]; then \
+			echo "✓ $$name already installed"; \
+		else \
+			echo "Installing $$name..."; \
+			if [ "$$(uname -m)" = "arm64" ]; then url="$$arm64_url"; else url="$$x64_url"; fi; \
+			tmpfile=$$(mktemp /tmp/dmg-XXXXXX.dmg); \
+			curl -fsSL -o "$$tmpfile" "$$url" && \
+			volume=$$(hdiutil attach "$$tmpfile" -nobrowse | tail -1 | awk -F'\t' '{print $$NF}') && \
+			cp -R "$$volume"/*.app /Applications/ && \
+			hdiutil detach "$$volume" -quiet && \
+			rm -f "$$tmpfile" && \
+			echo "✓ $$name installed" || \
+			echo "✗ $$name installation failed"; \
+		fi; \
 	done
 
 update-brew: brew-dump ## 互換: 現在インストールされているパッケージでBrewfileを更新

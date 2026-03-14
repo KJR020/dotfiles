@@ -1,0 +1,7 @@
+# DMGインストーラで管理するアプリ一覧
+# フォーマット: app_name|app_dir_name|arm64_url|x64_url
+# app_name: 識別名
+# app_dir_name: /Applications/ 内のアプリ名（.app含む）
+# arm64_url: Apple Silicon用DMG URL
+# x64_url: Intel用DMG URL
+craft-agent|Craft Agents.app|https://agents.craft.do/electron/latest/Craft-Agent-arm64.dmg|https://agents.craft.do/electron/latest/Craft-Agent-x64.dmg
