@@ -1,0 +1,5 @@
+provider: claude
+language: ja
+concurrency: 2
+auto_pr: true
+prevent_sleep: true
