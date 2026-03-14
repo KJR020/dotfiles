@@ -3,8 +3,6 @@
     "ENABLE_TOOL_SEARCH": "true",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "enableAllProjectMcpServers": false,
-  "defaultMode": "bypassPermissions",
   "permissions": {
     "allow": [
       "Read",
@@ -98,34 +96,7 @@
       "Edit(~/.config/gh/**)"
     ]
   },
-  "enabledPlugins": {
-    "claude-mem@thedotmack": true,
-    "rev@bp-plugins": true
-  },
-  "mcpServers": {
-    "notebooklm": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--directory",
-        "~/.local/share/notebooklm-mcp",
-        "python",
-        "main.py"
-      ],
-      "env": {
-        "HEADLESS": "true",
-        "NOTEBOOKLM_PROFILE": "full"
-      }
-    },
-    "notebooklm-query": {
-      "command": "npx",
-      "args": ["notebooklm-mcp@latest"],
-      "env": {
-        "NOTEBOOKLM_PROFILE": "full"
-      }
-    }
-  },
-  "effortLevel": "high",
+  "enableAllProjectMcpServers": false,
   "hooks": {
     "Stop": [
       {
@@ -163,5 +134,37 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true,
+    "rev@bp-plugins": true
+  },
+  "effortLevel": "high",
+  "defaultMode": "bypassPermissions",
+  "mcpServers": {
+    "notebooklm": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "~/.local/share/notebooklm-mcp",
+        "python",
+        "main.py"
+      ],
+      "env": {
+        "HEADLESS": "true",
+        "NOTEBOOKLM_PROFILE": "full"
+      }
+    },
+    "notebooklm-query": {
+      "command": "npx",
+      "args": [
+        "notebooklm-mcp@latest"
+      ],
+      "env": {
+        "NOTEBOOKLM_PROFILE": "full"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true
 }
